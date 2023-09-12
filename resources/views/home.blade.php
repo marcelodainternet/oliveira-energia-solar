@@ -9,5 +9,9 @@
 <body>
     <h1>Oliveira Energia Solar</h1>
     <h2>{{$nome}}</h2>
+    @foreach($secoes as $secao)
+    <div>{{$secao->nome}}</div>
+    <div>{{$secao->subtitulo}}</div>
+    @endforeach
 </body>
 </html>
