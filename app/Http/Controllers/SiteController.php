@@ -8,6 +8,11 @@ class SiteController extends Controller
 {
     function index()
     {
-        return view('home');
+        $nome="Marcelo";
+        return view('home', compact("nome"));
+    }
+    function contato()
+    {
+        return view('contato');
     }
 }
