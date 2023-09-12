@@ -7,7 +7,7 @@
     <title>Oliveira Energia Solar</title>
 </head>
 <body>
-    <h1>Oliveira Energia Solar 2</h1>
+    <h1>Oliveira Energia Solar</h1>
     <h2>{{$nome}}</h2>
 </body>
 </html>
