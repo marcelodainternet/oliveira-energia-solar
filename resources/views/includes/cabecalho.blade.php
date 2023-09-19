@@ -4,7 +4,7 @@
             <!-- <h1><a href="index.html">My<span>Biz</span></a></h1>-->
             <!-- Uncomment below if you prefer to use an image logo -->
             <a href="./"><img src="imagens/logo2.png" alt="" class="img-fluid"></a>
-            <a target="_blank" href="https://api.whatsapp.com/send?phone=55<?php echo $configuracao['telefone']; ?>&text=<?php echo $configuracao['whatstxt']; ?>"><img src="imagens/icon-whats2.gif" width="42" class="d-md-none" style="margin-left:40px; margin-top:-7px; " data-aos="fade-left"></a>
+            <a target="_blank" href="https://api.whatsapp.com/send?phone=55<?php echo $configuracao['telefone']; ?>&text=<?php echo $configuracao['whatstxt']; ?>"><img src="imagens/icon-whats.gif" width="42" class="d-md-none" style="margin-left:40px; margin-top:-7px; " data-aos="fade-left"></a>
         </div>
         <nav id="navbar" class="navbar">
             <ul>
