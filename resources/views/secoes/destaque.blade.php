@@ -5,7 +5,7 @@
             <h2><small><?php echo $destaque->titulo ?></small></h2>
             <h3><?php echo $destaque->subtitulo ?></h3>
             <div class="mt-3 mb-3"><?php echo $destaque->descricao ?></div>
-            <a target="_blank" href="https://api.whatsapp.com/send?phone=55<?php echo $configuracao['telefone']; ?>&text=<?php echo $configuracao['whatstxt']; ?>" class="mt-3 mb-4 btn btn-info btn-get-started scrollto animate__animated animate__fadeInUp" style="color:<?php echo $configuracao['cortxt4']; ?>;">Saber mais...<img src="imagens/icon-whats2.gif" width="30" class="d-md-none" style="margin-left:10px; margin-top:-10px;" data-aos="fade-left"></a>
+            <a target="_blank" href="https://api.whatsapp.com/send?phone=55<?php echo $configuracao['telefone']; ?>&text=<?php echo $configuracao['whatstxt']; ?>" class="mt-3 mb-4 btn btn-info btn-get-started scrollto animate__animated animate__fadeInUp" style="color:<?php echo $configuracao['cortxt4']; ?>;">Saber mais...<img src="imagens/icon-whats.gif" width="30" class="d-md-none" style="margin-left:10px; margin-top:-10px;" data-aos="fade-left"></a>
         </div>
         <div class="col-lg-6 order-lg-2 videos">
             @foreach ($destaque->postagens as $postagem) 

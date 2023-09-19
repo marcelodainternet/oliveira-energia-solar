@@ -1,6 +1,9 @@
 @extends("admin.layout")
 @section("head")
     <title>Projetos - Admin</title>
+    <script src="{{asset('assets/libs/tinymce/js/tinymce/tinymce.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/richtext-editor.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/upload-image.js')}}"></script>
 @endsection
 @section("content")
     <div class="row">

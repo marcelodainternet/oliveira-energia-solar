@@ -12,18 +12,18 @@
   <link rel="shortcut icon" type="image/x-icon" href="{{asset('imagens/favicon.png')}}">
   <link rel="apple-touch-icon" sizes="152x152" href="{{asset('imagens/favicon.png')}}">
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('imagens/favicon.png')}}">
-  <link rel="stylesheet" href="{{asset('admin/assets/css/bootstrap.css')}}"/>
-  <link rel="stylesheet" href="{{asset('admin/assets/css/font-awesome.css')}}"/>
-  <link rel="stylesheet" href="{{asset('admin/assets/css/basic.css')}}"/>
-  <link rel="stylesheet" href="{{asset('admin/assets/css/custom.css')}}"/>
-  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans' />
+  <link rel="stylesheet" href="{{asset('assets/libs/bootstrap-3.2.0/css/bootstrap.css')}}"/>
+  <link rel="stylesheet" href="{{asset('assets/admin-assets/css/font-awesome.css')}}"/>
+  <link rel="stylesheet" href="{{asset('assets/admin-assets/css/basic.css')}}"/>
+  <link rel="stylesheet" href="{{asset('assets/admin-assets/css/custom.css')}}"/>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans'/>
 </head>
 
 <body style="background-color:#1f2627; color:#FFF;">
     <div class="container">
         <div class="row text-center" style="padding-top:50px; margin-bottom:-20px;">
             <div class="col-md-12" style="display:flex; flex-flow:column; align-items:center;">
-                <img class="img-responsive" src=" {{asset("admin/assets/img/logo-large.png")}}" width="200"><br>
+                <img class="img-responsive" src=" {{asset("assets/imagens/logo-dark.png")}}" width="200"><br>
                 <h4>---- ÁREA RESTRITA ----</h4>
             </div>
         </div>

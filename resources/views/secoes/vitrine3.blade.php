@@ -16,7 +16,7 @@
         }
         ?>
 
-        <a target="_blank" href="https://api.whatsapp.com/send?phone=55<?php echo $configuracao['telefone']; ?>&text=<?php echo $configuracao['whatstxt2']; ?>" class="mt-3 btn btn-info btn-get-started scrollto animate__animated animate__fadeInUp" style="color:<?php echo $configuracao['cortxt4'] ?>;">Saber mais...<img src="{{asset('imagens/icon-whats2.gif')}}" width="30" class="d-md-none" style="margin-left:10px; margin-top:-10px;" data-aos="fade-left"></a>
+        <a target="_blank" href="https://api.whatsapp.com/send?phone=55<?php echo $configuracao['telefone']; ?>&text=<?php echo $configuracao['whatstxt2']; ?>" class="mt-3 btn btn-info btn-get-started scrollto animate__animated animate__fadeInUp" style="color:<?php echo $configuracao['cortxt4'] ?>;">Saber mais...<img src="{{asset('imagens/icon-whats.gif')}}" width="30" class="d-md-none" style="margin-left:10px; margin-top:-10px;" data-aos="fade-left"></a>
       </div>
     </div>
 </section>
