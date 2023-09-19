@@ -9,5 +9,6 @@ class Lead extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $table = "emails_cap";
 }

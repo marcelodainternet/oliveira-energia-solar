@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Secao extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
     protected $table = "secoes";
 
     public function postagens(): HasMany

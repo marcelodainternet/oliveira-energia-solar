@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use App\Models\Configuracao;
 use App\Models\Postagem;
 use App\Models\Secao;
@@ -21,6 +23,55 @@ class AdminController extends Controller
         $configuracao = Configuracao::first();
 
         return view("admin.configuracoes", compact("configuracao"));
+    }
+
+    function salvarConfiguracoes(Request $request)
+    {
+        salvar_imagem($request->imagem, "imagem-principal");
+
+        Configuracao::find(1)->update([
+            "site" => $request->site,
+            "titulo" => $request->titulo ?? '',
+            "subtitulo" => $request->subtitulo ?? '',
+            "descricao" => $request->descricao ?? '',
+            "p_chaves" => $request->p_chaves,
+            "email" => $request->email,
+            "email2" => $request->email2 ?? '',
+            "email3" => $request->email3 ?? '',
+            "telefone" => $request->telefone,
+            "telefone2" => $request->telefone2 ?? '',
+            "telefone3" => $request->telefone3 ?? '',
+            "cep" => $request->cep ?? '',
+            "endereco" => $request->endereco,
+            "numero" => $request->numero ?? '',
+            "complemento" => $request->complemento ?? '',
+            "bairro" => $request->bairro ?? '',
+            "cidade" => $request->cidade ?? '',
+            "estado" => $request->estado ?? '',
+            "endereco2" => $request->endereco2 ?? '',
+            "endereco3" => $request->endereco3 ?? '',
+            "horatend" => $request->horatend,
+            "horatend2" => $request->horatend2 ?? '',
+            "horatend3" => $request->horatend3 ?? '',
+            "info"   => $request->info,
+            "whatstxt"   => $request->whatstxt,
+            "whatstxt2"   => $request->whatstxt2,
+            "whatstxt3"   => $request->whatstxt3,
+            "instagram" => $request->instagram,
+            "facebook" => $request->facebook,
+            "youtube" => $request->youtube ?? '',
+            "google_maps" => $request->google_maps,
+            "play_store" => $request->play_store ?? '',
+            "apple_store" => $request->apple_store ?? '',
+            "linkedin" => $request->linkedin ?? '',
+            "twitter" => $request->twitter ?? '',
+            "tiktok" => $request->tiktok ?? '',
+            "termos" => $request->termos,
+            "privacidade" => $request->privacidade,
+            "cookies" => $request->politica_cookies ?? ''
+        ]);
+
+        return back()->with('saved', true);
     }
 
     function secoes($secao = null)

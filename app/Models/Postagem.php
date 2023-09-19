@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Postagem extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
     protected $table = "postagens";
 
     public function secao()

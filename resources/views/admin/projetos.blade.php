@@ -13,7 +13,7 @@
     <div class="page-content">
         <div class="page-container">
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-5 {{$projeto?'visible':'hidden'}}">
                     <h3>Cadastro de Projeto no PORTFÓLIO</h3>
                     <?php
                         /* if ($_POST) {
@@ -252,14 +252,15 @@
                                 </div>
                             -->
             
-                            <div class="form-group col-md-6">
-                                <label>Imagem</label><br>
-
-                                <img height="60" src="../imagens/categorias/{$projeto->id}.1.jpg" alt="" title="">
-                                <a href="./?area=categorias&editar=<?php echo $_GET['editar'] ?? ''; ?>&remover_foto=1"><img src="assets/img/excluir.jpg" width="30" height="30" title="Excluir" alt="Excluir"></a>
-                                
-                                <input class="form-control input hidden" name="foto1" type="file" id="foto1"/>
-                            </div>
+                            <!--
+                                maintenance mode
+                                <div class="form-group col-md-6">
+                                    <label>Imagem</label><br>
+                                    @if($projeto)
+                                        <x-upload-image fallback="{{asset('/admin/assets/img/padrao.jpg')}}" path="uploads/projeto-{{Str::slug($projeto->nome)}}.jpg" name="imagem"/>
+                                    @endif
+                                </div>
+                            -->
 
                             <!-- Multiple Checkboxes (inline) Inativo 
                                 <div align="left" class="form-group col-md-6">
@@ -302,25 +303,25 @@
                             <!-- Text input Nome  -->
                             <div class="form-group col-md-12">
                                 <label>Projeto*</label>
-                                <input required type="text" id="nome" name="nome" placeholder="Nome* (Obigatório, só aparece p/google)" class="form-control" value="<?php //echo $nome ?>">
+                                <input required type="text" id="nome" name="nome" placeholder="Nome* (Obigatório, só aparece p/google)" class="form-control" value="<?php echo $projeto->nome??'' ?>">
                             </div>
             
                             <!-- Text input Titulo-->
                             <div class="form-group col-md-12">
                                 <label>Titulo</label>
-                                <input type="text" id="titulo" name="titulo" placeholder="Título" class="form-control" value="<?php //echo $titulo ?>">
+                                <input type="text" id="titulo" name="titulo" placeholder="Título" class="form-control" value="<?php echo $projeto->titulo??'' ?>">
                             </div>
             
                             <!-- Text input SubTitulo-->
                             <div class="form-group col-md-12">
                                 <label>Subtitulo</label>
-                                <input type="text" id="subtitulo" name="subtitulo" placeholder="Subtítulo" class="form-control" value="<?php //echo $subtitulo ?>">
+                                <input type="text" id="subtitulo" name="subtitulo" placeholder="Subtítulo" class="form-control" value="<?php echo $projeto->subtitulo??'' ?>">
                             </div>
             
                             <!-- Text input Descrição-->
                             <div class="form-group col-md-12">
                                 <label>Descrição</label>
-                                <textarea id="descricao" name="descricao" rows="10" class="form-control"><?php //echo $descricao; ?></textarea>
+                                <textarea id="descricao" name="descricao" rows="10" class="form-control"><?php echo $projeto->descricao??'' ?></textarea>
                             </div>
             
                             <!-- File Button Enviar -->
@@ -333,7 +334,7 @@
                     </form>
                 </div>
         
-                <div class="col-md-7">
+                <div class="{{$projeto?'col-md-7':'col-md-12'}}">
                     <h3>Projetos cadastrados</h3>            
                     <div class="table-responsive">
                         <table class="table table-hover table-striped table-responsive">
@@ -428,9 +429,13 @@
                                 -->
                                 <td style="width:0; white-space:nowrap;">
                                     @if ($categoria->inativo == 1)
-                                        <a href="./?area=categorias&ordenar=' . $_GET['ordenar'] . '&ordem=' . $_GET['ordem'] . '&lista=' . $_GET['lista'] . '&inativo=0&id=' . $id . '"><img src="{{asset('admin/assets/img/ico-negativo.jpg')}}" width="30" height="30" title="Inativo"></a>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#a94442" class="bi bi-toggle-on" viewBox="0 0 16 16">
+                                            <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+                                        </svg>
                                     @else
-                                        <a href="./?area=categorias&ordenar=' . $_GET['ordenar'] . '&ordem=' . $_GET['ordem'] . '&lista=' . $_GET['lista'] . '&inativo=1&id=' . $id . '"><img src="{{asset('admin/assets/img/ico-positivo.jpg')}}" width="30" height="30" title="Ativo"></a>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#3c763d" class="bi bi-toggle-on" viewBox="0 0 16 16">
+                                            <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+                                        </svg>
                                     @endif
                                 </td>
                                 
@@ -450,8 +455,8 @@
                                     <td align="left"><?php //echo $subtitulo ?></td>
                                 -->
                                 <td style="width:0; white-space:nowrap;">
-                                    <a class="btn btn-sm btn-primary" href="">Editar</a>
-                                    <a class="btn btn-sm btn-primary" href="">Excluir</a>
+                                    <a class="btn btn-sm btn-primary" href="{{route('projetos.editar', $categoria->id)}}">Editar</a>
+                                    <a class="btn btn-sm btn-danger" href="@{{route('projetos.excluir', $categoria->id)}}">Excluir</a>
                                 </td>
                             </tr>
                         @endforeach

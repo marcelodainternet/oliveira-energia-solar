@@ -19,10 +19,14 @@ Route::group(["prefix" => "adm"], function () {
     Route::group(["middleware" => "auth"], function () {
         Route::get('/', [AdminController::class, 'index']);
         Route::get('/configuracoes', [AdminController::class, 'configuracoes']);
+        Route::post('/configuracoes', [AdminController::class, 'salvarConfiguracoes']);
         Route::get('/secoes/{secao?}', [AdminController::class, 'secoes'])->name("secoes.editar");
+        Route::get('/secoes/{secao}', [AdminController::class, 'secoes'])->name("secoes.excluir");
         Route::get('/secoes/{secao}/postagens/{postagem?}', [AdminController::class, 'postagens'])->name("postagens.editar");
-        Route::get('/projetos', [AdminController::class, 'projetos']);
+        Route::get('/secoes/{secao}/postagens/{postagem}', [AdminController::class, 'postagens'])->name("postagens.excluir");
+        Route::get('/projetos/{projeto?}', [AdminController::class, 'projetos'])->name("projetos.editar");
+        Route::get('/projetos/{projeto}', [AdminController::class, 'projetos'])->name("projetos.excluir");
         Route::get('/leads', [AdminController::class, 'leads']);
-        Route::get('/usuarios/{acao?}', [AdminController::class, 'usuarios']);
+        Route::get('/usuarios', [AdminController::class, 'usuarios']);
     });
 });

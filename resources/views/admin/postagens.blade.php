@@ -66,6 +66,7 @@
           ]
       });
   </script>
+  <script src="{{asset('assets/js/upload-image.js')}}"></script>
 @endsection
 @section("content")
     <div class="row">
@@ -360,43 +361,33 @@
             </div>
             -->
                 
-                  <div class="form-group col-md-6">
+              <!--
+                maintenance mode
+                <div class="form-group col-md-6">
                     <label>Imagem</label><br>
-
-                    @if($postagem && file_exists(public_path('imagens/postagens/'.$postagem->id.'.1.jpg')))
-                      <div style="position: relative; display:inline-block;">
-                        <label for="foto1">
-                          <img class="img-thumbnail" style="width: 225px; height: 150px; object-fit:contain;" src="{{asset('imagens/postagens/'.$postagem->id.'.1.jpg')}}" alt="1" title="1">
-                        </label>
-                        <a style="position: absolute; right: 1px; top: 1px; padding: 2px; background: #fff; border: 1px solid #ddd; border-width: 0 0 1px 1px; border-radius: 0 0 0 5px; line-height: 1;" class="text-danger" href="./?area=secoes&editar=$secao&remover_foto=1">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                          </svg>
-                        </a>
-                      </div>
-                    @else
-                    <label for="foto1"><img class="img-thumbnail" style="width: 225px; height: 150px; object-fit: contain;" src="{{asset('/admin/assets/img/padrao.jpg')}}" alt="1" title="1"></label>
+                    @if($postagem)
+                      <x-upload-image fallback="{{asset('/admin/assets/img/padrao.jpg')}}" path="uploads/postagem-{{Str::slug($postagem->nome)}}.jpg" name="imagem"/>
                     @endif
-                    
-                    <input class="form-control input hidden" name="foto1" type="file" id="foto1" />
                   </div>
-
-                <!-- Multiple Checkboxes (inline) Inativo
-                <div align="left" class="form-group col-md-6">
-                  <label class="control-label" for="inativo">Inativo:</label>
-                  <label class="checkbox-inline" for="inativo-0">
-                    <input type="checkbox" id="inativo-0"  name="inativo"value="1" <?php //if ($inativo == 1) { ?>checked="checked"<?php //} ?> >
-                    SIM </label>
                 </div>
               -->
+
+                <!-- Multiple Checkboxes (inline) Inativo
+                  <div align="left" class="form-group col-md-6">
+                    <label class="control-label" for="inativo">Inativo:</label>
+                    <label class="checkbox-inline" for="inativo-0">
+                      <input type="checkbox" id="inativo-0"  name="inativo"value="1" <?php //if ($inativo == 1) { ?>checked="checked"<?php //} ?> >
+                      SIM </label>
+                  </div>
+                -->
                 <!-- imagens -->
                 <!-- File Button Imagem 
-              <div class="form-group">
-                <label>Imagem</label>
-                <img width="70" class="img-thumbnail" src="../imagens/postagens/thumbs/<?php //echo $_GET['editar'] ?>.jpg?<?php echo rand() ?>" alt="<?php //echo $titulo ?>" title="<?php //echo $titulo ?>">
-                <input type="file" id="imagem" name="imagem" value="<?php //echo $titulo ?>"class="input-file">
-              </div>
-              -->
+                  <div class="form-group">
+                    <label>Imagem</label>
+                    <img width="70" class="img-thumbnail" src="../imagens/postagens/thumbs/<?php //echo $_GET['editar'] ?>.jpg?<?php echo rand() ?>" alt="<?php //echo $titulo ?>" title="<?php //echo $titulo ?>">
+                    <input type="file" id="imagem" name="imagem" value="<?php //echo $titulo ?>"class="input-file">
+                  </div>
+                -->
                 <!-- Select Secao -->
                 <div class="form-group col-md-12">
                   <label>Escolha a SEÇÃO da postagem*</label>
@@ -417,8 +408,8 @@
                   ?>
                   </select>
                   <!--
-                <span class="selectRequiredMsg">Selecione um item ou</span><a href="./?area=secoes" data-target="#secoes"> Cadastre nova seção</a> ]
-              -->
+                    <span class="selectRequiredMsg">Selecione um item ou</span><a href="./?area=secoes" data-target="#secoes"> Cadastre nova seção</a> ]
+                  -->
                 </div>
   
                 <!-- Select categoria 
@@ -613,7 +604,7 @@
                     <a class="btn btn-sm btn-primary" href="{{route('postagens.editar', ['secao' => $secao->id, 'postagem' => $postagem->id])}}" onClick="return confirmLink(this, 'excluir este item?')">
                       Editar
                     </a>
-                    <a class="btn btn-sm btn-primary" href="{{route('postagens.editar', ['secao' => $secao->id, 'postagem' => $postagem->id])}}" onClick="return confirmLink(this, 'excluir este item?')">
+                    <a class="btn btn-sm btn-danger" href="{{route('postagens.editar', ['secao' => $secao->id, 'postagem' => $postagem->id])}}" onClick="return confirmLink(this, 'excluir este item?')">
                       Excluir
                     </a>
                   </td>

@@ -138,12 +138,18 @@
             ?>
             @foreach($leads as $lead)
               <tr style="text-align:center;">
-                <td><?php echo $lead->nome ?></td>
-                <td><a href="https://api.whatsapp.com/send?phone=55<?php //echo $telefone; ?>&text=Olá <?php //echo $nome ?>," target="_blanc" class="imgwhats"> <img src="../imagens/whats.fw.png" width="20"> </a> <?php //echo $telefone ?></td>
+                <td>{!!$lead->nome != ""?$lead->nome:'<i class="text-muted">Sem nome</i>'!!}</td>
+                <td>
+                  @if($lead->telefone)
+                    <a href="https://api.whatsapp.com/send?phone=55<?php echo $lead->telefone; ?>&text=Olá <?php echo $lead->nome ?>," target="_blanc" class="imgwhats"> <img src="../imagens/whats.fw.png" width="20"> </a> <?php //echo $telefone ?>
+                  @else
+                    <i class="text-muted">Sem telefone</i>
+                  @endif
+                </td>
                 <td><?php echo $lead->email ?></td>
                 <td style="width:0; white-space:nowrap;">
                   <a class="btn btn-sm btn-primary" href="./?area=emails_cap&editar=<?php //echo $id ?>">Editar</a>
-                  <a class="btn btn-sm btn-primary" onClick="return confirmLink(this, 'excluir o cliente <?php //echo $nome ?>?')" href="./?area=emails_cap&excluir=<?php //echo $id ?>">Excluir</a></td>
+                  <a class="btn btn-sm btn-danger" onClick="return confirmLink(this, 'excluir o cliente <?php //echo $nome ?>?')" href="./?area=emails_cap&excluir=<?php //echo $id ?>">Excluir</a></td>
               </tr>
             @endforeach
             <?php
