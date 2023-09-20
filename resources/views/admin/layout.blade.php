@@ -8,13 +8,13 @@
     <meta name="Reply-to" content="marcelodainternet@gmail.com">
     <meta name="theme-color" content="#1f2627">
     <meta name="apple-mobile-web-app-status-bar-style" content="#1f2627">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('imagens/favicon.png')}}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{asset('imagens/favicon.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('imagens/favicon.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.png')}}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{asset('assets/img/favicon.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('assets/img/favicon.png')}}">
     <link rel="stylesheet" href="{{asset('assets/libs/bootstrap-3.2.0/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/admin-assets/css/font-awesome.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/admin-assets/css/basic.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/admin-assets/css/custom.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/libs/font-awesome-4.2.0/font-awesome.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/basic.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans">
     @yield("head")
 </head>
