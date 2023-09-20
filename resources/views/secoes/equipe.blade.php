@@ -11,7 +11,7 @@
                 <div class="col-lg-6">
                     <div class="member d-flex align-items-start">
                     <div class="pic">
-                        <a href="imagens/postagens/thumbs/<?php echo $postagem->id ?>.1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="<?php echo $postagem->titulo ?> - <?php echo $postagem->subtitulo ?>"><img src="imagens/postagens/thumbs/<?php echo $postagem->id ?>.1.jpg" alt="<?php echo $postagem->titulo ?>" title="<?php echo $postagem->titulo ?>" class="img-fluid"></a>
+                        <a href="uploads/postagem-<?php echo $postagem->id ?>-thumbs.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="<?php echo $postagem->titulo ?> - <?php echo $postagem->subtitulo ?>"><img src="uploads/postagem-<?php echo $postagem->id ?>-thumbs.jpg" alt="<?php echo $postagem->titulo ?>" title="<?php echo $postagem->titulo ?>" class="img-fluid"></a>
                     </div>
                     <div class="member-info" style="margin-left:10px;">
                         <h4><?php echo $postagem->titulo ?></h4>

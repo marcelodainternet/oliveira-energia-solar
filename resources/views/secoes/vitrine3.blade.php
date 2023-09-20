@@ -1,4 +1,4 @@
-<section id="vitrines3" class="vitrines2e3" style='background: url("imagens/secoes/grande/<?php echo $vitrine3->id ?>.1.jpg") center center no-repeat; background-size:cover;'>
+<section id="vitrines3" class="vitrines2e3" style='background: url("uploads/secao-<?php echo $vitrine3->id ?>.jpg") center center no-repeat; background-size:cover;'>
     <div class="container position-relative">
 
       <div class="text-center title m-5 " style="color:<?php echo $configuracao['cortxt4'] ?>;">

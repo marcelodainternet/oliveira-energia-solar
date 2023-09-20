@@ -1,4 +1,4 @@
-<section id="depoimentos" class="depoimentos" style='background: url("imagens/secoes/<?php echo $depoimentos->id ?>.1.jpg") center center no-repeat; background-size:cover;'>
+<section id="depoimentos" class="depoimentos" style='background: url("uploads/secao-<?php echo $depoimentos->id ?>.jpg") center center no-repeat; background-size:cover;'>
     <div class="container position-relative">
         <div class="text-center title m-5 " style="color:<?php echo $configuracao['cortxt4'] ?>;">
             <h1 class="scrollto animate__animated animate__fadeInUp mb-4"><strong><?php echo $depoimentos->titulo ?></strong></h1>
