@@ -20,17 +20,18 @@
       <div class="row">
         <div class="col-md-5 {{$secao?'visible':'hidden'}}">
           <h3>Editar Seção</h3>
-          <form action="./?area=secoes" method="post" enctype="multipart/form-data" name="form1" id="form1">
+          <form action="{{$secao?route('secoes.atualizar', $secao->id):''}}" method="post" enctype="multipart/form-data" name="form1" id="form1">
+            @csrf
+            @method('put')
             <div class="row">
-              <!--
-                maintenance mode
-                <div class="form-group col-md-12">
-                  <label>Imagem</label><br>
-                  @if($secao)
-                    <x-upload-image fallback="{{asset('/admin/assets/img/padrao.jpg')}}" path="uploads/secao-{{Str::slug($secao->nome)}}.jpg" name="imagem"/>
-                  @endif
-                </div>
-              -->
+
+              <div class="form-group col-md-12">
+                <label>Imagem</label><br>
+                @if($secao)
+                  <x-upload-image fallback="{{asset('assets/img/padrao.png')}}" path="uploads/secao-{{$secao->id}}.jpg" name="imagem"/>
+                @endif
+              </div>
+
               <div class="form-group col-md-12 disabled">
                 <fieldset disabled>
                   <label>Seção*</label>
@@ -294,27 +295,24 @@
               @foreach($secoes as $secao)
                 <tr style="text-align:center;">
                   <td style="width:0; vertical-align:middle;">
-                    @if (file_exists(public_path('imagens/secoes/thumbs/'.$secao->id.'.1.jpg')))
-                      <img style="width: 75px; height: 50px; object-fit: cover; max-width: none;" class="img-thumbnail" src="{{asset('imagens/secoes/thumbs/'.$secao->id.'.1.jpg')}}">
+                    @if (file_exists(public_path('uploads/secao-'.$secao->id.'.jpg')))
+                      <img style="width: 75px; height: 50px; object-fit: cover; max-width: none;" class="img-thumbnail" src="{{asset('uploads/secao-'.$secao->id.'-thumbs.jpg')}}">
                     @endif
                   </td>
                   <td style="vertical-align:middle; text-align:left;">{{$secao->nome}}</td>
                   <td style="vertical-align:middle; text-align:left;">{{$secao->titulo}}</td>
                   <td style="width:0; vertical-align:middle; white-space:nowrap;">
-                    <a class="btn btn-sm btn-primary" href="{{route('secoes.editar', $secao->id)}}">
-                      Editar
-                    </a>
-                    <a class="btn btn-sm btn-primary" href="{{route('postagens.editar', $secao->id)}}">
+                    <a class="btn btn-sm btn-primary" href="{{route('postagens', $secao->id)}}">
                       Ver Postagens ({{$secao->postagens->count()}})
+                    </a>
+                    <a class="btn btn-sm btn-primary" href="{{route('secoes', $secao->id)}}">
+                      Editar
                     </a>
                   </td>
                 </tr>
               @endforeach
             </table>
           </div>
-          <?php
-          //include('inc.paginacao.php');
-          ?>
         </div>
       </div>
     </div>

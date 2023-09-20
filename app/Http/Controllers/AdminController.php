@@ -10,6 +10,8 @@ use App\Models\Secao;
 use App\Models\usuario;
 use App\Models\Lead;
 use App\Models\Categoria;
+use App\Models\Subcategoria;
+use Str;
 
 class AdminController extends Controller
 {
@@ -18,14 +20,14 @@ class AdminController extends Controller
         return view("admin.inicio");
     }
 
-    function configuracoes()
+    function editarConfiguracoes()
     {
         $configuracao = Configuracao::first();
 
         return view("admin.configuracoes", compact("configuracao"));
     }
 
-    function salvarConfiguracoes(Request $request)
+    function atualizarConfiguracoes(Request $request)
     {
         salvar_imagem($request->imagem, "imagem-principal");
 
@@ -82,6 +84,21 @@ class AdminController extends Controller
         return view("admin.secoes", compact("secoes", "secao"));
     }
 
+    function atualizarSecao($secao, Request $request)
+    {
+        $secao = Secao::find($secao);
+
+        salvar_imagem($request->imagem, "secao-" . $secao->id);
+
+        $secao->update([
+            "titulo" => $request->titulo ?? '',
+            "subtitulo" => $request->subtitulo ?? '',
+            "descricao" => $request->descricao ?? ''
+        ]);
+
+        return back()->with('saved', true);
+    }
+
     function postagens($secao, $postagem = null)
     {
         $secao = Secao::find($secao);
@@ -90,12 +107,73 @@ class AdminController extends Controller
         return view("admin.postagens", compact("secao", "postagem"));
     }
 
+    function atualizarPostagem($secao, $postagem, Request $request)
+    {
+        $postagem = Postagem::find($postagem);
+
+        salvar_imagem($request->imagem, "postagem-" . $postagem->id);
+
+        $postagem->update([
+            "nome" => $request->nome ?? '',
+            "titulo" => $request->titulo ?? '',
+            "subtitulo" => $request->subtitulo ?? '',
+            "descricao" => $request->descricao ?? '',
+            "link" => $request->link ?? ''
+        ]);
+
+        return back()->with('saved', true);
+    }
+
+    function excluirPostagem()
+    {
+    }
+
     function projetos($projeto = null)
     {
         $projetos = Categoria::get();
         if ($projeto) $projeto = Categoria::find($projeto);
 
         return view("admin.projetos", compact("projetos", "projeto"));
+    }
+
+    function atualizarProjeto($projeto, Request $request)
+    {
+        $projeto = Categoria::find($projeto);
+
+        salvar_imagem($request->imagem, "projeto-" . $projeto->id);
+
+        $projeto->update([
+            "nome" => $request->nome ?? '',
+            "titulo" => $request->titulo ?? '',
+            "subtitulo" => $request->subtitulo ?? '',
+            "descricao" => $request->descricao ?? ''
+        ]);
+
+        return back()->with('saved', true);
+    }
+
+    function fotos($projeto, $foto = null)
+    {
+        $projeto = Categoria::find($projeto);
+        if ($foto) $foto = Subcategoria::find($foto);
+
+        return view("admin.fotos", compact("projeto", "foto"));
+    }
+
+    function atualizarFoto($projeto, $foto, Request $request)
+    {
+        $foto = Subcategoria::find($foto);
+
+        salvar_imagem($request->imagem, "projeto-foto-" . $foto->id);
+
+        $foto->update([
+            "nome" => $request->nome ?? '',
+            "titulo" => $request->titulo ?? '',
+            "subtitulo" => $request->subtitulo ?? '',
+            "descricao" => $request->descricao ?? ''
+        ]);
+
+        return back()->with('saved', true);
     }
 
     function leads()

@@ -2,7 +2,7 @@
     <div class="navbar-header" style="background-color:#1f2627;">
         <button style="margin-top:15px;" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse"> <span class="sr-only">Menu</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
         <a class="navbar-brand" style="background-color:#1f2627;" href="{{url('adm')}}">
-            <img class="img-responsive" width="200" style="margin-top: -10px;" src="{{asset('assets/img/logo-dark2.png')}}">
+            <img class="img-responsive" width="200" src="{{asset('assets/img/logo-dark2.png')}}">
         </a>
     </div>
     <nav style="position: absolute; background-color:#2a3336; width:100%;" class="navbar-default navbar-side" role="navigation">

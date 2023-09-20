@@ -70,4 +70,27 @@ class SiteController extends Controller
         ]);
         return back();
     }
+
+    function mostrarCategoria($categoria)
+    {
+        $configuracao = Configuracao::first();
+
+        $categoria = Categoria::find($categoria);
+
+        return view("categoria", compact("configuracao", "categoria"));
+    }
+
+    function privacidade()
+    {
+        $configuracao = Configuracao::first();
+
+        return view("privacidade", compact("configuracao"));
+    }
+
+    function termos()
+    {
+        $configuracao = Configuracao::first();
+
+        return view("termos", compact("configuracao"));
+    }
 }

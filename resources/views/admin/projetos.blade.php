@@ -179,7 +179,9 @@
                             }
                         } */
                     ?>
-                    <form action="./?area=categorias" method="post" enctype="multipart/form-data" name="form1" id="form1">
+                    <form action="{{$projeto?route('projetos.atualizar', ['projeto' => $projeto->id]):''}}" method="post" enctype="multipart/form-data" name="form1" id="form1">
+                        @csrf
+                        @method('put')
                         <fieldset>
                         <div class="row">
                             <!-- Text input ordem 
@@ -255,15 +257,13 @@
                                 </div>
                             -->
             
-                            <!--
-                                maintenance mode
-                                <div class="form-group col-md-6">
-                                    <label>Imagem</label><br>
-                                    @if($projeto)
-                                        <x-upload-image fallback="{{asset('/admin/assets/img/padrao.jpg')}}" path="uploads/projeto-{{Str::slug($projeto->nome)}}.jpg" name="imagem"/>
-                                    @endif
-                                </div>
-                            -->
+                            <div class="form-group col-md-6">
+                                <label>Imagem</label><br>
+                                @if($projeto)
+                                    <x-upload-image fallback="{{asset('assets/img/padrao.png')}}" path="uploads/projeto-{{$projeto->id}}.jpg" name="imagem"/>
+                                @endif
+                            </div>
+
 
                             <!-- Multiple Checkboxes (inline) Inativo 
                                 <div align="left" class="form-group col-md-6">
@@ -443,8 +443,8 @@
                                 </td>
                                 
                                 <td style="width:0; white-space:nowrap;">
-                                    @if(public_path('imagens/categorias/thumbs/'.$categoria->id.'.1.jpg'))
-                                    <img width="100" class="img-thumbnail" src="{{asset('imagens/categorias/thumbs/'.$categoria->id.'.1.jpg')}}">
+                                    @if(public_path('uploads/projeto-'.$categoria->id.'-thumbs.jpg'))
+                                        <img width="100" class="img-thumbnail" src="{{asset('uploads/projeto-'.$categoria->id.'-thumbs.jpg')}}">
                                     @endif
                                 </td>
                 
@@ -458,7 +458,10 @@
                                     <td align="left"><?php //echo $subtitulo ?></td>
                                 -->
                                 <td style="width:0; white-space:nowrap;">
-                                    <a class="btn btn-sm btn-primary" href="{{route('projetos.editar', $categoria->id)}}">Editar</a>
+                                    <a class="btn btn-sm btn-primary" href="{{route('fotos', ['projeto' => $categoria->id])}}">
+                                        Ver Fotos ({{$categoria->subcategorias->count()}})
+                                    </a>
+                                    <a class="btn btn-sm btn-primary" href="{{route('projetos', $categoria->id)}}">Editar</a>
                                     <a class="btn btn-sm btn-danger" href="@{{route('projetos.excluir', $categoria->id)}}">Excluir</a>
                                 </td>
                             </tr>

@@ -20,294 +20,289 @@
           <h3>Cadastro de Postagem</h3>
           <p>&nbsp;</p>
           <?php
-          //if ($_POST) {
-  
-            // formata a data no padróo mysql data_expira = \''.date('Y-m-d').'\',
-            /* $data_expira = explode('/', $_POST['data_expira']);
-            $data_expira = $data_expira[2] . '-' . $data_expira[1] . '-' . $data_expira[0]; */
-  
-            // altera no banco 
-            /* if ($_POST['editar'] != '') {
-              $sql = 'UPDATE postagens SET 
-                data_expira = \'' . date('Y-m-d') . '\',
-                inativo = \'' . $_POST['inativo'] . '\', 
-                destaque = \'' . $_POST['destaque'] . '\', 
-                etiqueta_id = \'' . $_POST['etiqueta'] . '\', 
-                secao_id = \'' . $_POST['secao'] . '\',
-                categoria_id = \'' . $_POST['categoria'] . '\',
-                subcategoria_id = \'' . $_POST['subcategoria'] . '\',
-                nome = \'' . $_POST['nome'] . '\', 
-                imagem = \'' . $_POST['imagem'] . '\', 
-                titulo = \'' . $_POST['titulo'] . '\', 
-                subtitulo = \'' . $_POST['subtitulo'] . '\', 
-                detalhe = \'' . $_POST['detalhe'] . '\', 
-                descricao = \'' . $_POST['descricao'] . '\', 
-                link = \'' . $_POST['link'] . '\', 
-                fonte = \'' . $_POST['fonte'] . '\', 
-                alinhamento = \'' . $_POST['alinhamento'] . '\', 
-                container = \'' . $_POST['container'] . '\',
-                borda = \'' . $_POST['borda'] . '\',
-                arredondado = \'' . $_POST['arredondado'] . '\',
-                sombra = \'' . $_POST['sombra'] . '\',
-                background = \'' . $_POST['background'] . '\',
-                opiniao = \'' . $_POST['opiniao'] . '\',
-                views = \'' . $_POST['views'] . '\'
-                WHERE id = \'' . $_POST['editar'] . '\'';
-              $res = mysql_query($sql);
-              $id = $_POST['editar'];
-          ?>
-              <p class="alert alert-success" role="alert">Postagem alterada com sucesso!
-                <button type="button" class="close" data-dismiss="alert"> <i class="ace-icon fa fa-times"></i> </button>
-              </p>
-            <?php
-            } else {
-  
-              // Insere no banco 
-              $sql = 'INSERT INTO postagens SET 
-                data_expira = \'' . date('Y-m-d') . '\',
-                inativo = \'' . $_POST['inativo'] . '\', 
-                destaque = \'' . $_POST['destaque'] . '\', 
-                etiqueta_id = \'' . $_POST['etiqueta'] . '\', 
-                secao_id = \'' . $_POST['secao'] . '\',
-                categoria_id = \'' . $_POST['categoria'] . '\',
-                subcategoria_id = \'' . $_POST['subcategoria'] . '\',
-                nome = \'' . $_POST['nome'] . '\', 
-                imagem = \'' . $_POST['imagem'] . '\', 
-                titulo = \'' . $_POST['titulo'] . '\', 
-                subtitulo = \'' . $_POST['subtitulo'] . '\', 
-                detalhe = \'' . $_POST['detalhe'] . '\', 
-                descricao = \'' . $_POST['descricao'] . '\', 
-                link = \'' . $_POST['link'] . '\',
-                fonte = \'' . $_POST['fonte'] . '\',
-                alinhamento = \'' . $_POST['alinhamento'] . '\',
-                container = \'' . $_POST['container'] . '\',
-                borda = \'' . $_POST['borda'] . '\',
-                arredondado = \'' . $_POST['arredondado'] . '\',
-                sombra = \'' . $_POST['sombra'] . '\',
-                background = \'' . $_POST['background'] . '\',
-                opiniao = \'' . $_POST['opiniao'] . '\',
-                views = \'' . $_POST['views'] . '\',
-                data_cadastro = \'' . date('Y-m-d H:i') . '\'';
-              $res = mysql_query($sql);
-              $id = mysql_insert_id();
-  
+            //if ($_POST) {
+    
+              // formata a data no padróo mysql data_expira = \''.date('Y-m-d').'\',
+              /* $data_expira = explode('/', $_POST['data_expira']);
+              $data_expira = $data_expira[2] . '-' . $data_expira[1] . '-' . $data_expira[0]; */
+    
+              // altera no banco 
+              /* if ($_POST['editar'] != '') {
+                $sql = 'UPDATE postagens SET 
+                  data_expira = \'' . date('Y-m-d') . '\',
+                  inativo = \'' . $_POST['inativo'] . '\', 
+                  destaque = \'' . $_POST['destaque'] . '\', 
+                  etiqueta_id = \'' . $_POST['etiqueta'] . '\', 
+                  secao_id = \'' . $_POST['secao'] . '\',
+                  categoria_id = \'' . $_POST['categoria'] . '\',
+                  subcategoria_id = \'' . $_POST['subcategoria'] . '\',
+                  nome = \'' . $_POST['nome'] . '\', 
+                  imagem = \'' . $_POST['imagem'] . '\', 
+                  titulo = \'' . $_POST['titulo'] . '\', 
+                  subtitulo = \'' . $_POST['subtitulo'] . '\', 
+                  detalhe = \'' . $_POST['detalhe'] . '\', 
+                  descricao = \'' . $_POST['descricao'] . '\', 
+                  link = \'' . $_POST['link'] . '\', 
+                  fonte = \'' . $_POST['fonte'] . '\', 
+                  alinhamento = \'' . $_POST['alinhamento'] . '\', 
+                  container = \'' . $_POST['container'] . '\',
+                  borda = \'' . $_POST['borda'] . '\',
+                  arredondado = \'' . $_POST['arredondado'] . '\',
+                  sombra = \'' . $_POST['sombra'] . '\',
+                  background = \'' . $_POST['background'] . '\',
+                  opiniao = \'' . $_POST['opiniao'] . '\',
+                  views = \'' . $_POST['views'] . '\'
+                  WHERE id = \'' . $_POST['editar'] . '\'';
+                $res = mysql_query($sql);
+                $id = $_POST['editar'];
             ?>
-              <p class="alert alert-success" role="alert">Postagem cadastrada com sucesso!
-                <button type="button" class="close" data-dismiss="alert"> <i class="ace-icon fa fa-times"></i> </button>
-              </p>
-            <?php
-            }
-  
-            // funcao que redimensiona a foto
-            function arruma_foto($filename, $maximo)
-            {
-              list($width, $height) = getimagesize($filename);
-              if ($width >= $height) {
-                $newwidth = $maximo;
-                $newheight = $maximo * $height / $width;
+                <p class="alert alert-success" role="alert">Postagem alterada com sucesso!
+                  <button type="button" class="close" data-dismiss="alert"> <i class="ace-icon fa fa-times"></i> </button>
+                </p>
+              <?php
               } else {
-                $newheight = $maximo;
-                $newwidth = $width * $maximo / $height;
+    
+                // Insere no banco 
+                $sql = 'INSERT INTO postagens SET 
+                  data_expira = \'' . date('Y-m-d') . '\',
+                  inativo = \'' . $_POST['inativo'] . '\', 
+                  destaque = \'' . $_POST['destaque'] . '\', 
+                  etiqueta_id = \'' . $_POST['etiqueta'] . '\', 
+                  secao_id = \'' . $_POST['secao'] . '\',
+                  categoria_id = \'' . $_POST['categoria'] . '\',
+                  subcategoria_id = \'' . $_POST['subcategoria'] . '\',
+                  nome = \'' . $_POST['nome'] . '\', 
+                  imagem = \'' . $_POST['imagem'] . '\', 
+                  titulo = \'' . $_POST['titulo'] . '\', 
+                  subtitulo = \'' . $_POST['subtitulo'] . '\', 
+                  detalhe = \'' . $_POST['detalhe'] . '\', 
+                  descricao = \'' . $_POST['descricao'] . '\', 
+                  link = \'' . $_POST['link'] . '\',
+                  fonte = \'' . $_POST['fonte'] . '\',
+                  alinhamento = \'' . $_POST['alinhamento'] . '\',
+                  container = \'' . $_POST['container'] . '\',
+                  borda = \'' . $_POST['borda'] . '\',
+                  arredondado = \'' . $_POST['arredondado'] . '\',
+                  sombra = \'' . $_POST['sombra'] . '\',
+                  background = \'' . $_POST['background'] . '\',
+                  opiniao = \'' . $_POST['opiniao'] . '\',
+                  views = \'' . $_POST['views'] . '\',
+                  data_cadastro = \'' . date('Y-m-d H:i') . '\'';
+                $res = mysql_query($sql);
+                $id = mysql_insert_id();
+    
+              ?>
+                <p class="alert alert-success" role="alert">Postagem cadastrada com sucesso!
+                  <button type="button" class="close" data-dismiss="alert"> <i class="ace-icon fa fa-times"></i> </button>
+                </p>
+              <?php
               }
-              $thumb = imagecreatetruecolor($newwidth, $newheight);
-              $source = imagecreatefromjpeg($filename);
-              imagecopyresampled($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-              $arquivo_gravado = imagejpeg($thumb, $filename, 80);
-            }
-  
-            // grava as fotos
-            for ($x = 1; $x <= 4; $x++) {
-              if (is_uploaded_file($_FILES['foto' . $x]['tmp_name'])) {
-                move_uploaded_file($_FILES['foto' . $x]['tmp_name'], '../imagens/postagens/' . $id . '.' . $x . '.jpg');
-                copy('../imagens/postagens/' . $id . '.' . $x . '.jpg', '../imagens/postagens/thumbs/' . $id . '.' . $x . '.jpg');
-                copy('../imagens/postagens/' . $id . '.' . $x . '.jpg', '../imagens/postagens/grande/' . $id . '.' . $x . '.jpg');
-                arruma_foto('../imagens/postagens/' . $id . '.' . $x . '.jpg', 800);
-                arruma_foto('../imagens/postagens/thumbs/' . $id . '.' . $x . '.jpg', 400);
-                arruma_foto('../imagens/postagens/grande/' . $id . '.' . $x . '.jpg', 1600);
+    
+              // funcao que redimensiona a foto
+              function arruma_foto($filename, $maximo)
+              {
+                list($width, $height) = getimagesize($filename);
+                if ($width >= $height) {
+                  $newwidth = $maximo;
+                  $newheight = $maximo * $height / $width;
+                } else {
+                  $newheight = $maximo;
+                  $newwidth = $width * $maximo / $height;
+                }
+                $thumb = imagecreatetruecolor($newwidth, $newheight);
+                $source = imagecreatefromjpeg($filename);
+                imagecopyresampled($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+                $arquivo_gravado = imagejpeg($thumb, $filename, 80);
+              }
+    
+              // grava as fotos
+              for ($x = 1; $x <= 4; $x++) {
+                if (is_uploaded_file($_FILES['foto' . $x]['tmp_name'])) {
+                  move_uploaded_file($_FILES['foto' . $x]['tmp_name'], '../imagens/postagens/' . $id . '.' . $x . '.jpg');
+                  copy('../imagens/postagens/' . $id . '.' . $x . '.jpg', '../imagens/postagens/thumbs/' . $id . '.' . $x . '.jpg');
+                  copy('../imagens/postagens/' . $id . '.' . $x . '.jpg', '../imagens/postagens/grande/' . $id . '.' . $x . '.jpg');
+                  arruma_foto('../imagens/postagens/' . $id . '.' . $x . '.jpg', 800);
+                  arruma_foto('../imagens/postagens/thumbs/' . $id . '.' . $x . '.jpg', 400);
+                  arruma_foto('../imagens/postagens/grande/' . $id . '.' . $x . '.jpg', 1600);
+                }
               }
             }
-          }
-  
-          // Exclui do banco
-          if (isset($_GET['excluir'])) {
-            $sql = 'DELETE FROM postagens WHERE id = \'' . $_GET['excluir'] . '\'';
-            $res = mysql_query($sql);
-  
-            // Edita a imagem
-            if (is_file('../imagens/postagens/' . $_GET['editar'] . '.' . $x . '.jpg')) {
-              unlink('../imagens/postagens/' . $_GET['editar'] . '.' . $x . '.jpg');
-              unlink('../imagens/postagens/grande/' . $_GET['editar'] . '.' . $x . '.jpg');
-              unlink('../imagens/postagens/thumbs/' . $_GET['editar'] . '.' . $x . '.jpg');
+    
+            // Exclui do banco
+            if (isset($_GET['excluir'])) {
+              $sql = 'DELETE FROM postagens WHERE id = \'' . $_GET['excluir'] . '\'';
+              $res = mysql_query($sql);
+    
+              // Edita a imagem
+              if (is_file('../imagens/postagens/' . $_GET['editar'] . '.' . $x . '.jpg')) {
+                unlink('../imagens/postagens/' . $_GET['editar'] . '.' . $x . '.jpg');
+                unlink('../imagens/postagens/grande/' . $_GET['editar'] . '.' . $x . '.jpg');
+                unlink('../imagens/postagens/thumbs/' . $_GET['editar'] . '.' . $x . '.jpg');
+              }
+    
+              ?>
+              <p class="alert alert-danger" role="alert">Postagem escluída com sucesso!
+                <button type="button" class="close" data-dismiss="alert"> <i class="ace-icon fa fa-times"></i> </button>
+              </p>
+            <?php
             }
-  
-            ?>
-            <p class="alert alert-danger" role="alert">Postagem escluída com sucesso!
-              <button type="button" class="close" data-dismiss="alert"> <i class="ace-icon fa fa-times"></i> </button>
-            </p>
-          <?php
-          }
-  
-          // Altera o inativo
-          if (isset($_GET['inativo']) && $_GET['inativo'] != '') {
-            $sql = 'UPDATE postagens SET inativo = \'' . $_GET['inativo'] . '\' WHERE id = \'' . $_GET['id'] . '\'';
-            $res = mysql_query($sql);
-          }
-  
-          // Carrega os dados para edição
-          if (isset($_GET['editar'])) {
-            $sql = 'SELECT * FROM postagens WHERE id = \'' . $_GET['editar'] . '\'';
-            $res = mysql_query($sql);
-            $num = mysql_num_rows($res);
-            for ($i = 0; $i < $num; $i++) {
-              $data_expira = mysql_result($res, $i, 'data_expira');
-              $inativo = mysql_result($res, $i, 'inativo');
-              $destaque = mysql_result($res, $i, 'destaque');
-              $etiqueta_id = mysql_result($res, $i, 'etiqueta_id');
-              $secao_id = mysql_result($res, $i, 'secao_id');
-              $categoria_id = mysql_result($res, $i, 'categoria_id');
-              $subcategoria_id = mysql_result($res, $i, 'subcategoria_id');
-              $nome = mysql_result($res, $i, 'nome');
-              $titulo = mysql_result($res, $i, 'titulo');
-              $subtitulo = mysql_result($res, $i, 'subtitulo');
-              $detalhe = mysql_result($res, $i, 'detalhe');
-              $descricao = mysql_result($res, $i, 'descricao');
-              $link = mysql_result($res, $i, 'link');
-              $fonte = mysql_result($res, $i, 'fonte');
-              $alinhamento = mysql_result($res, $i, 'alinhamento');
-              $container = mysql_result($res, $i, 'container');
-              $borda = mysql_result($res, $i, 'borda');
-              $arredondado = mysql_result($res, $i, 'arredondado');
-              $sombra = mysql_result($res, $i, 'sombra');
-              $background = mysql_result($res, $i, 'background');
-              $opiniao = mysql_result($res, $i, 'opiniao');
-              $views = mysql_result($res, $i, 'views');
-  
-              // Formata a data no padrao Brasileiro
-              $data_expira = explode('-', $data_expira);
-              $data_expira = $data_expira[2] . '/' . $data_expira[1] . '/' . $data_expira[0];
+    
+            // Altera o inativo
+            if (isset($_GET['inativo']) && $_GET['inativo'] != '') {
+              $sql = 'UPDATE postagens SET inativo = \'' . $_GET['inativo'] . '\' WHERE id = \'' . $_GET['id'] . '\'';
+              $res = mysql_query($sql);
             }
-          }
-  
-          // Exclui a foto
-          if (isset($_GET['remover_foto'])) {
-            if (is_file('../imagens/postagens/' . $_GET['editar'] . '.' . $_GET['remover_foto'] . '.jpg')) {
-              unlink('../imagens/postagens/' . $_GET['editar'] . '.' . $_GET['remover_foto'] . '.jpg');
-              unlink('../imagens/postagens/grande/' . $_GET['editar'] . '.' . $_GET['remover_foto'] . '.jpg');
-              unlink('../imagens/postagens/thumbs/' . $_GET['editar'] . '.' . $_GET['remover_foto'] . '.jpg');
+    
+            // Carrega os dados para edição
+            if (isset($_GET['editar'])) {
+              $sql = 'SELECT * FROM postagens WHERE id = \'' . $_GET['editar'] . '\'';
+              $res = mysql_query($sql);
+              $num = mysql_num_rows($res);
+              for ($i = 0; $i < $num; $i++) {
+                $data_expira = mysql_result($res, $i, 'data_expira');
+                $inativo = mysql_result($res, $i, 'inativo');
+                $destaque = mysql_result($res, $i, 'destaque');
+                $etiqueta_id = mysql_result($res, $i, 'etiqueta_id');
+                $secao_id = mysql_result($res, $i, 'secao_id');
+                $categoria_id = mysql_result($res, $i, 'categoria_id');
+                $subcategoria_id = mysql_result($res, $i, 'subcategoria_id');
+                $nome = mysql_result($res, $i, 'nome');
+                $titulo = mysql_result($res, $i, 'titulo');
+                $subtitulo = mysql_result($res, $i, 'subtitulo');
+                $detalhe = mysql_result($res, $i, 'detalhe');
+                $descricao = mysql_result($res, $i, 'descricao');
+                $link = mysql_result($res, $i, 'link');
+                $fonte = mysql_result($res, $i, 'fonte');
+                $alinhamento = mysql_result($res, $i, 'alinhamento');
+                $container = mysql_result($res, $i, 'container');
+                $borda = mysql_result($res, $i, 'borda');
+                $arredondado = mysql_result($res, $i, 'arredondado');
+                $sombra = mysql_result($res, $i, 'sombra');
+                $background = mysql_result($res, $i, 'background');
+                $opiniao = mysql_result($res, $i, 'opiniao');
+                $views = mysql_result($res, $i, 'views');
+    
+                // Formata a data no padrao Brasileiro
+                $data_expira = explode('-', $data_expira);
+                $data_expira = $data_expira[2] . '/' . $data_expira[1] . '/' . $data_expira[0];
+              }
             }
-          } */
+    
+            // Exclui a foto
+            if (isset($_GET['remover_foto'])) {
+              if (is_file('../imagens/postagens/' . $_GET['editar'] . '.' . $_GET['remover_foto'] . '.jpg')) {
+                unlink('../imagens/postagens/' . $_GET['editar'] . '.' . $_GET['remover_foto'] . '.jpg');
+                unlink('../imagens/postagens/grande/' . $_GET['editar'] . '.' . $_GET['remover_foto'] . '.jpg');
+                unlink('../imagens/postagens/thumbs/' . $_GET['editar'] . '.' . $_GET['remover_foto'] . '.jpg');
+              }
+            } 
+            */
   
           ?>
-          <form action="./?area=postagens" method="post" enctype="multipart/form-data" name="form1" id="form1">
+          <form action="{{$postagem?route('postagens.atualizar', ['secao' => $secao->id, 'postagem' => $postagem->id]):''}}" method="post" enctype="multipart/form-data" name="form1" id="form1">
+            @csrf
+            @method('put')
             <fieldset>
-  
-              <!--   
-              Text input data expira 
-                  <div class="form-group">
-            <label>Data Expira</label>
-                      <input type="date" id="data_expira" name="data_expira" placeholder="Data Expira: Ex: 02/01/2016" class="form-control" value="<?php //if ($data_expira != '00/00/0000') {
-                                                                                                                                                      //echo $data_expira;
-                                                                                                                                                    //} ?>">
-                  </div>
-          -->
-  
               <div class="row">
+
+                <!--
+                  <div class="form-group">
+                    <label>Data Expira</label>
+                    <input type="date" id="data_expira" name="data_expira" placeholder="Data Expira: Ex: 02/01/2016" class="form-control" value="<?php if ($postagem && $postagem->data_expira != '00/00/0000') { echo $postagem->data_expira; } ?>">
+                  </div>
+                -->
   
                 <!-- Multiple Checkboxes (inline) Destaque 
-                <div align="left" class="form-group col-md-6">
-                  <label class="control-label" for="destaque">Destaque:</label>
-                  <label class="checkbox-inline" for="destaque-0">
-                    <input type="checkbox" id="destaque-0"  name="destaque"value="1" <?php //if ($destaque == 1) { ?>checked="checked"<?php //} ?> >
-                    SIM </label>
-                </div>
-               -->
+                  <div align="left" class="form-group col-md-6">
+                    <label class="control-label" for="destaque">Destaque:</label>
+                    <label class="checkbox-inline" for="destaque-0">
+                      <input type="checkbox" id="destaque-0"  name="destaque"value="1" <?php //if ($destaque == 1) { ?>checked="checked"<?php //} ?> >
+                      SIM </label>
+                  </div>
+                -->
                 <!-- Multiple Checkboxes (inline) container 
-                <div align="left" class="form-group col-md-6">
-                  <label class="control-label" for="container">Container:</label>
-                  <label class="checkbox-inline" for="container-0">
-                    <input type="checkbox" id="container-0"  name="container"value="1" <?php //if ($container == 1) { ?>checked="checked"<?php //} ?> >
-                    SIM </label>
-                </div>
+                  <div align="left" class="form-group col-md-6">
+                    <label class="control-label" for="container">Container:</label>
+                    <label class="checkbox-inline" for="container-0">
+                      <input type="checkbox" id="container-0"  name="container"value="1" <?php //if ($container == 1) { ?>checked="checked"<?php //} ?> >
+                      SIM </label>
+                  </div>
                 -->
                 <!-- Multiple Checkboxes (inline) Borda 
-                <div align="left" class="form-group col-md-6">
-                  <label class="control-label" for="borda">Borda:</label>
-                  <label class="checkbox-inline" for="borda-0">
-                    <input type="checkbox" id="borda-0"  name="borda"value="1" <?php //if ($borda == 1) { ?>checked="checked"<?php //} ?> >
-                    SIM </label>
-                </div>
+                  <div align="left" class="form-group col-md-6">
+                    <label class="control-label" for="borda">Borda:</label>
+                    <label class="checkbox-inline" for="borda-0">
+                      <input type="checkbox" id="borda-0"  name="borda"value="1" <?php //if ($borda == 1) { ?>checked="checked"<?php //} ?> >
+                      SIM </label>
+                  </div>
                 -->
                 <!-- Multiple Checkboxes (inline) Arredondado 
-                <div align="left" class="form-group col-md-6">
-                  <label class="control-label" for="arredondado">Arredondado:</label>
-                  <label class="checkbox-inline" for="arredondado-0">
-                    <input type="checkbox" id="arredondado-0"  name="arredondado"value="1" <?php //if ($arredondado == 1) { ?>checked="checked"<?php //} ?> >
-                    SIM </label>
-                </div>
+                  <div align="left" class="form-group col-md-6">
+                    <label class="control-label" for="arredondado">Arredondado:</label>
+                    <label class="checkbox-inline" for="arredondado-0">
+                      <input type="checkbox" id="arredondado-0"  name="arredondado"value="1" <?php //if ($arredondado == 1) { ?>checked="checked"<?php //} ?> >
+                      SIM </label>
+                  </div>
                 -->
                 <!-- Multiple Checkboxes (inline) Sombra 
-                <div align="left" class="form-group col-md-6">
-                  <label class="control-label" for="sombra">Sombra:</label>
-                  <label class="checkbox-inline" for="sombra-0">
-                    <input type="checkbox" id="sombra-0"  name="sombra"value="1" <?php //if ($sombra == 1) { ?>checked="checked"<?php //} ?> >
-                    SIM </label>
-                </div>
+                  <div align="left" class="form-group col-md-6">
+                    <label class="control-label" for="sombra">Sombra:</label>
+                    <label class="checkbox-inline" for="sombra-0">
+                      <input type="checkbox" id="sombra-0"  name="sombra"value="1" <?php //if ($sombra == 1) { ?>checked="checked"<?php //} ?> >
+                      SIM </label>
+                  </div>
                 -->
                 <!-- Multiple Checkboxes (inline) background 
-                <div class="form-group col-md-6">
-                  <label>Cor de Fundo</label>
-                  <input type="text" id="background" name="background" placeholder="Background" class="form-control" value="<?php //echo $background ?>">
-                </div>
-              -->
-                <!-- Select Alinhamento
-              <div class="form-group col-md-6">
-                <label>Alinhamento</label>
-                <select name="alinhamento" id="alinhamento" class="form-control">
-                  <option><?php //echo $alinhamento ?>
-                  <option value="Center">Center</option>
-                  <option value="Left">Left</option>
-                  <option value="Right">Right</option>
-                </select>
-                </div>
-               -->
-                <!-- Select Etiqueta 
-              <div class="form-group col-md-6">
-                <label>Etiqueta</label>
-                <select name="etiqueta" id="etiqueta" class="form-control">
-                  <option>
-                  <?php
-                  /* $sql = 'SELECT * FROM etiquetas ORDER BY id';
-                  $res = mysql_query($sql);
-                  $num = mysql_num_rows($res);
-                  for ($i = 0; $i < $num; $i++) {
-                    $id = mysql_result($res, $i, 'id');
-                    $etiqueta = mysql_result($res, $i, 'nome');
-                  ?>
-                  <option value="<?php echo $id ?>" <?php if ($id == $etiqueta_id) { ?>selected="selected"<?php } ?>><?php echo $etiqueta ?></option>
-                  <?php
-                  } */
-                  ?>
-                </select>
-                </div>
-  -->
-                <!-- File Button Parallax 
-                <div class="form-group col-md-12"> 
-            <label>Imagem de Fundo</label>
-              <img width="70" class="img-thumbnail" src="../imagens/postagens/thumbs/<?php //echo $_GET['editar'] ?>.jpg?<?php echo rand() ?>" alt="<?php //echo $titulo ?>" title="<?php //echo $titulo ?>">
-              <input type="file" id="parallax" name="parallax" value="<?php //echo $parallax ?>"class="input-file">
-            </div>
-            -->
-                
-              <!--
-                maintenance mode
-                <div class="form-group col-md-6">
-                    <label>Imagem</label><br>
-                    @if($postagem)
-                      <x-upload-image fallback="{{asset('/admin/assets/img/padrao.jpg')}}" path="uploads/postagem-{{Str::slug($postagem->nome)}}.jpg" name="imagem"/>
-                    @endif
+                  <div class="form-group col-md-6">
+                    <label>Cor de Fundo</label>
+                    <input type="text" id="background" name="background" placeholder="Background" class="form-control" value="<?php //echo $background ?>">
                   </div>
+                -->
+                <!-- Select Alinhamento
+                  <div class="form-group col-md-6">
+                    <label>Alinhamento</label>
+                    <select name="alinhamento" id="alinhamento" class="form-control">
+                      <option><?php //echo $alinhamento ?>
+                      <option value="Center">Center</option>
+                      <option value="Left">Left</option>
+                      <option value="Right">Right</option>
+                    </select>
+                  </div>
+                -->
+                <!-- Select Etiqueta 
+                  <div class="form-group col-md-6">
+                    <label>Etiqueta</label>
+                    <select name="etiqueta" id="etiqueta" class="form-control">
+                      <option>
+                      <?php
+                      /* $sql = 'SELECT * FROM etiquetas ORDER BY id';
+                      $res = mysql_query($sql);
+                      $num = mysql_num_rows($res);
+                      for ($i = 0; $i < $num; $i++) {
+                        $id = mysql_result($res, $i, 'id');
+                        $etiqueta = mysql_result($res, $i, 'nome');
+                      ?>
+                      <option value="<?php echo $id ?>" <?php if ($id == $etiqueta_id) { ?>selected="selected"<?php } ?>><?php echo $etiqueta ?></option>
+                      <?php
+                      } */
+                      ?>
+                    </select>
+                  </div>
+                -->
+                <!-- File Button Parallax 
+                  <div class="form-group col-md-12"> 
+                    <label>Imagem de Fundo</label>
+                    <img width="70" class="img-thumbnail" src="../imagens/postagens/thumbs/<?php //echo $_GET['editar'] ?>.jpg?<?php echo rand() ?>" alt="<?php //echo $titulo ?>" title="<?php //echo $titulo ?>">
+                    <input type="file" id="parallax" name="parallax" value="<?php //echo $parallax ?>"class="input-file">
+                  </div>
+                -->
+                
+                <div class="form-group col-md-6">
+                  <label>Imagem</label><br>
+                  @if($postagem)
+                    <x-upload-image fallback="{{asset('/assets/img/padrao.png')}}" path="uploads/postagem-{{$postagem->id}}.jpg" name="imagem"/>
+                  @endif
                 </div>
-              -->
 
                 <!-- Multiple Checkboxes (inline) Inativo
                   <div align="left" class="form-group col-md-6">
@@ -340,9 +335,9 @@
                         $secao = mysql_result($res, $i, 'nome'); */
                       ?>
                     <option value="<?php //echo $id ?>" <?php //if ($id == $secao_id) { ?>selected="selected" <?php //} ?>><?php //echo $secao ?></option>
-                  <?php
-                      //}
-                  ?>
+                    <?php
+                        //}
+                    ?>
                   </select>
                   <!--
                     <span class="selectRequiredMsg">Selecione um item ou</span><a href="./?area=secoes" data-target="#secoes"> Cadastre nova seção</a> ]
@@ -350,49 +345,49 @@
                 </div>
   
                 <!-- Select categoria 
-              <div class="form-group">
-            <label>Escolha a CATEGORIA da postagem*</label>
-            <select required name="categoria" id="categoria" class="form-control">
-              <option><?php //echo $categoria; ?>
-              <?php
-              // $sql = 'SELECT * FROM categorias ORDER BY nome ASC LIMIT 6 OFFSET 5';
-              /* $sql = 'SELECT * FROM categorias ORDER BY id';
-              $res = mysql_query($sql);
-              $num = mysql_num_rows($res);
-              for ($i = 0; $i < $num; $i++) {
-                $id = mysql_result($res, $i, 'id');
-                $categoria = mysql_result($res, $i, 'nome'); */
-              ?>
-              <option value="<?php //echo $id ?>" <?php //if ($id == $categoria_id) { ?>selected="selected"<?php //} ?>><?php //echo $categoria ?></option>
-              <?php
-              //}
-              ?>
-            </select>
-                      <span class="selectRequiredMsg">Selecione um item ou</span><a href="./?area=categorias" data-target="#categorias"> Cadastre nova categoria</a>
+                  <div class="form-group">
+                    <label>Escolha a CATEGORIA da postagem*</label>
+                    <select required name="categoria" id="categoria" class="form-control">
+                      <option><?php //echo $categoria; ?>
+                      <?php
+                      // $sql = 'SELECT * FROM categorias ORDER BY nome ASC LIMIT 6 OFFSET 5';
+                      /* $sql = 'SELECT * FROM categorias ORDER BY id';
+                      $res = mysql_query($sql);
+                      $num = mysql_num_rows($res);
+                      for ($i = 0; $i < $num; $i++) {
+                        $id = mysql_result($res, $i, 'id');
+                        $categoria = mysql_result($res, $i, 'nome'); */
+                      ?>
+                      <option value="<?php //echo $id ?>" <?php //if ($id == $categoria_id) { ?>selected="selected"<?php //} ?>><?php //echo $categoria ?></option>
+                      <?php
+                      //}
+                      ?>
+                    </select>
+                    <span class="selectRequiredMsg">Selecione um item ou</span><a href="./?area=categorias" data-target="#categorias"> Cadastre nova categoria</a>
                   </div>
-            -->
+                -->
                 <!-- Select subcategoria 
-              <div class="form-group">
-            <label>Escolha a SUBCATEGORIA da postagem*</label>
-            <select required name="subcategoria" id="subcategoria" class="form-control">
-              <option><?php //echo $subcategoria; ?>
-              <?php
-              // $sql = 'SELECT * FROM subcategorias ORDER BY nome ASC LIMIT 6 OFFSET 5';
-              /* $sql = 'SELECT * FROM subcategorias ORDER BY id';
-              $res = mysql_query($sql);
-              $num = mysql_num_rows($res);
-              for ($i = 0; $i < $num; $i++) {
-                $id = mysql_result($res, $i, 'id');
-                $subcategoria = mysql_result($res, $i, 'nome'); */
-              ?>
-              <option value="<?php //echo $id ?>" <?php //if ($id == $subcategoria_id) { ?>selected="selected"<?php //} ?>><?php //echo $subcategoria ?></option>
-              <?php
-              //}
-              ?>
-            </select>
-                      <span class="selectRequiredMsg">Selecione um item ou</span><a href="./?area=subcategorias" data-target="#categorias"> Cadastre nova subcategoria</a>
+                  <div class="form-group">
+                    <label>Escolha a SUBCATEGORIA da postagem*</label>
+                    <select required name="subcategoria" id="subcategoria" class="form-control">
+                      <option><?php //echo $subcategoria; ?>
+                      <?php
+                      // $sql = 'SELECT * FROM subcategorias ORDER BY nome ASC LIMIT 6 OFFSET 5';
+                      /* $sql = 'SELECT * FROM subcategorias ORDER BY id';
+                      $res = mysql_query($sql);
+                      $num = mysql_num_rows($res);
+                      for ($i = 0; $i < $num; $i++) {
+                        $id = mysql_result($res, $i, 'id');
+                        $subcategoria = mysql_result($res, $i, 'nome'); */
+                      ?>
+                      <option value="<?php //echo $id ?>" <?php //if ($id == $subcategoria_id) { ?>selected="selected"<?php //} ?>><?php //echo $subcategoria ?></option>
+                      <?php
+                      //}
+                      ?>
+                    </select>
+                    <span class="selectRequiredMsg">Selecione um item ou</span><a href="./?area=subcategorias" data-target="#categorias"> Cadastre nova subcategoria</a>
                   </div>
-             -->
+                -->
                 <!-- Text input Nome  -->
                 <div class="form-group col-md-12">
                   <label>Postagem*</label>
@@ -424,21 +419,20 @@
                 </div>
   
                 <!-- Text input Fonte
-              <div class="form-group col-md-12">
-                <label>Fonte</label>
-                <input type="text" id="fonte" name="fonte" placeholder="Fonte" class="form-control" value="<?php //echo $fonte ?>">
-              </div>
-              -->
+                  <div class="form-group col-md-12">
+                    <label>Fonte</label>
+                    <input type="text" id="fonte" name="fonte" placeholder="Fonte" class="form-control" value="<?php //echo $fonte ?>">
+                  </div>
+                -->
                 <!-- File Button Enviar -->
                 <div class="form-group col-md-12">
                   <label class="control-label" for="filebutton"></label>
                   <input type="submit" id="enviar" name="enviar" class="btn btn-success btn-block" value="Cadastrar">
                   <input type="hidden" id="editar" name="editar" class="btn btn-success btn-sm" value="<?php //echo $_GET['editar'] ?>">
                 </div>
-  
+              </div>
             </fieldset>
           </form>
-          <p>&nbsp;</p>
         </div>
         <!-- /col-md-5 -->
   
@@ -448,73 +442,84 @@
           <div class="table-responsive">
             <table class="table table-hover table-striped table-responsive">
               <tr align="center">
-                <td><strong><a href="./?area=postagens&ordenar=id&ordem=<?php /* if ($_GET['ordem'] == 'DESC') {
+                <td>
+                  <strong><a href="./?area=postagens&ordenar=id&ordem=<?php /* if ($_GET['ordem'] == 'DESC') {
                                                                           echo 'ASC';
                                                                         } else {
                                                                           echo 'DESC';
-                                                                        } */ ?>">ID</a></strong></td>
-                <td><strong><a href="./?area=postagens&ordenar=postagens.inativo&ordem=<?php /* if ($_GET['ordem'] == 'DESC') {
+                                                                        } */ ?>">ID</a></strong>
+                </td>
+                <td>
+                  <strong><a href="./?area=postagens&ordenar=postagens.inativo&ordem=<?php /* if ($_GET['ordem'] == 'DESC') {
                                                                                           echo 'ASC';
                                                                                         } else {
                                                                                           echo 'DESC';
-                                                                                        } */ ?>">Ativo</a></strong></td>
+                                                                                        } */ ?>">Ativo</a></strong>
+                </td>
                 
-                <td><strong><a href="./?area=postagens&ordenar=id&ordem=<?php /* if ($_GET['ordem'] == 'DESC') {
+                <td>
+                  <strong><a href="./?area=postagens&ordenar=id&ordem=<?php /* if ($_GET['ordem'] == 'DESC') {
                                                                           echo 'ASC';
                                                                         } else {
                                                                           echo 'DESC';
-                                                                        } */ ?>">Imagem</a></strong></td>
+                                                                        } */ ?>">Imagem</a></strong>
+                </td>
                 
-                <td align="left"><strong><a href="./?area=postagens&ordenar=nome&ordem=<?php /* if ($_GET['ordem'] == 'DESC') {
+                <td align="left">
+                  <strong><a href="./?area=postagens&ordenar=nome&ordem=<?php /* if ($_GET['ordem'] == 'DESC') {
                                                                                           echo 'ASC';
                                                                                         } else {
                                                                                           echo 'DESC';
-                                                                                        } */ ?>">Postagem</a></strong></td>
-                <td align="left"><strong><a href="./?area=postagens&ordenar=titulo&ordem=<?php /* if ($_GET['ordem'] == 'DESC') {
+                                                                                        } */ ?>">Postagem</a></strong>
+                </td>
+
+                <td align="left">
+                  <strong><a href="./?area=postagens&ordenar=titulo&ordem=<?php /* if ($_GET['ordem'] == 'DESC') {
                                                                                             echo 'ASC';
                                                                                           } else {
                                                                                             echo 'DESC';
-                                                                                          } */ ?>">Título</a></strong></td>
+                                                                                          } */ ?>">Título</a></strong>
+                </td>
                 <td align="left"><strong><a href="./?area=postagens&ordenar=subtitulo&ordem=<?php /* if ($_GET['ordem'] == 'DESC') {
                                                                                               echo 'ASC';
                                                                                             } else {
                                                                                               echo 'DESC';
-                                                                                            } */ ?>">Subtítulo</a></strong></td>
-                                                                                            <td></td>
+                                                                                            } */ ?>">Subtítulo</a></strong>
+                </td>
+                <td></td>
               </tr>
               <?php
-  
-              // Define a ordem
-              /* if ($_GET['ordenar'] && $_GET['ordem']) {
-                $sql_ordenar = ' ORDER BY ' . $_GET['ordenar'] . ' ' . $_GET['ordem'];
-              } else {
-                $sql_ordenar = ' ORDER BY id DESC';
-              } */
-  
-              // lista as postagens encontradas e paginação
-              //$sql = 'SELECT postagens.id, postagens.inativo, postagens.nome, postagens.titulo, postagens.subtitulo, postagens.secao_id AS postagem, secoes.nome AS secao FROM postagens, secoes WHERE postagens.secao_id = secoes.id' . $sql_buscar . $sql_ordenar;
-  
-              // lista os registros de uma tabela
-              /* $url = 'postagens.php&busca=' . $_GET['busca'];
-              include('inc.pre-paginacao.php');
-              echo '<p class="alert alert-info" role="alert"><strong>' . $tr . ' postagens encontradas</strong></p>';
-              include('inc.paginacao.php'); */
-  
-              // Lista as postagens
-              /* $res = mysql_query($sql);
-              $num = mysql_num_rows($res);
-              for ($i = 0; $i < $num; $i++) {
-                $id = mysql_result($res, $i, 'id');
-                $inativo = mysql_result($res, $i, 'inativo');
-                $secao = mysql_result($res, $i, 'secao');
-                $nome = mysql_result($res, $i, 'nome');
-                $titulo = mysql_result($res, $i, 'titulo');
-                $subtitulo = mysql_result($res, $i, 'subtitulo'); */
-  
-                // formata a data no padrao Brasileiro
-                /* $data_expira = explode('-', $data_expira);
-                $data_expira = $data_expira[2] . '/' . $data_expira[1] . '/' . $data_expira[0]; */
-  
+                // Define a ordem
+                /* if ($_GET['ordenar'] && $_GET['ordem']) {
+                  $sql_ordenar = ' ORDER BY ' . $_GET['ordenar'] . ' ' . $_GET['ordem'];
+                } else {
+                  $sql_ordenar = ' ORDER BY id DESC';
+                } */
+    
+                // lista as postagens encontradas e paginação
+                //$sql = 'SELECT postagens.id, postagens.inativo, postagens.nome, postagens.titulo, postagens.subtitulo, postagens.secao_id AS postagem, secoes.nome AS secao FROM postagens, secoes WHERE postagens.secao_id = secoes.id' . $sql_buscar . $sql_ordenar;
+    
+                // lista os registros de uma tabela
+                /* $url = 'postagens.php&busca=' . $_GET['busca'];
+                include('inc.pre-paginacao.php');
+                echo '<p class="alert alert-info" role="alert"><strong>' . $tr . ' postagens encontradas</strong></p>';
+                include('inc.paginacao.php'); */
+    
+                // Lista as postagens
+                /* $res = mysql_query($sql);
+                $num = mysql_num_rows($res);
+                for ($i = 0; $i < $num; $i++) {
+                  $id = mysql_result($res, $i, 'id');
+                  $inativo = mysql_result($res, $i, 'inativo');
+                  $secao = mysql_result($res, $i, 'secao');
+                  $nome = mysql_result($res, $i, 'nome');
+                  $titulo = mysql_result($res, $i, 'titulo');
+                  $subtitulo = mysql_result($res, $i, 'subtitulo'); */
+    
+                  // formata a data no padrao Brasileiro
+                  /* $data_expira = explode('-', $data_expira);
+                  $data_expira = $data_expira[2] . '/' . $data_expira[1] . '/' . $data_expira[0]; 
+                } */
               ?>
               @foreach($secao->postagens as $postagem)
                 <tr align="center">
@@ -531,25 +536,29 @@
                     @endif
                   </td>
                   <td style="width:0; white-space:nowrap;">
-                    <img width="100" class="img-thumbnail" src="{{asset('imagens/postagens/thumbs/'.$postagem->id.'.1.jpg')}}">
+                    @if (file_exists(public_path('uploads/postagem-'.$postagem->id.'-thumbs.jpg')))
+                      <img width="100" class="img-thumbnail" src="{{asset('uploads/postagem-'.$postagem->id.'-thumbs.jpg')}}">
+                    @endif
                   </td>
                   
                   <td align="left"><?php echo $postagem->nome ?></td>
                   <td align="left"><?php echo $postagem->titulo ?></td>
                   <td align="left"><?php echo $postagem->subtitulo ?></td>
-                  <td style="width:0; white-space:nowrap;">
-                    <a class="btn btn-sm btn-primary" href="{{route('postagens.editar', ['secao' => $secao->id, 'postagem' => $postagem->id])}}" onClick="return confirmLink(this, 'excluir este item?')">
+                  <td style="width:0; white-space:nowrap;">                    
+                    <a class="btn btn-sm btn-primary" href="{{route('postagens', ['secao' => $secao->id, 'postagem' => $postagem->id])}}" onClick="return confirmLink(this, 'excluir este item?')">
                       Editar
                     </a>
-                    <a class="btn btn-sm btn-danger" href="{{route('postagens.editar', ['secao' => $secao->id, 'postagem' => $postagem->id])}}" onClick="return confirmLink(this, 'excluir este item?')">
-                      Excluir
-                    </a>
+                    <form method="post" action="{{route('postagens.excluir', ['secao' => $secao->id, 'postagem' => $postagem->id])}}" style="display:inline-block;">
+                      @csrf
+                      @method("delete")
+                      <button type="submit" class="btn btn-sm btn-danger" onClick="return confirmLink(this, 'excluir este item?')">
+                        Excluir
+                      </button>
+                    </form>
                   </td>
                 </tr>
               @endforeach
-              <?php
-              //}
-              ?>
+              
             </table>
           </div>
         </div>

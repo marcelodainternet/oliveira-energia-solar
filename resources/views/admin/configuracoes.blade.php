@@ -25,7 +25,7 @@
               <button type="button" class="close" data-dismiss="alert"> <i class="ace-icon fa fa-times"></i> </button>
             </h3>
           @endif
-          <form method="post" action="{{url('/adm/configuracoes')}}" enctype="multipart/form-data">
+          <form method="post" action="{{route('configuracoes.atualizar')}}" enctype="multipart/form-data">
             @csrf
             <fieldset>
               <div class="row">
@@ -142,13 +142,12 @@
                 -->
               </div>
               <div class="row">
-                <!--
-                  maintenance mode
-                  <div class="form-group col-md-5">
-                    <label>Imagem</label><br>
-                    <x-upload-image fallback="{{asset('/admin/assets/img/padrao.jpg')}}" path="uploads/imagem-principal.jpg" name="imagem"/>
-                  </div>
-                -->
+
+                <div class="form-group col-md-5">
+                  <label>Imagem</label><br>
+                  <x-upload-image fallback="{{asset('/admin/assets/img/padrao.jpg')}}" path="uploads/imagem-principal.jpg" name="imagem"/>
+                </div>
+
                 <!-- Multiple Checkboxes (inline) Parallax 
                   <div align="left" class="form-group col-md-2">
                     <label class="control-label" for="parallax">Parallax:</label><br>
