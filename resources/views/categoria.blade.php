@@ -20,7 +20,7 @@
             <div class="col-lg-4 portfolio-item <?php echo $subcategoria->titulo ?>">
               <a href="{{asset('imagens/subcategorias/grande/'.$subcategoria->id.'.1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="<?php echo $subcategoria->titulo ?> - <?php echo $subcategoria->subtitulo ?>">
                 <div class="portfolio-wrap">
-                  <img src="{{asset('imagens/subcategorias/'.$subcategoria->id.'.1.jpg')}}" class="img-fluid" width="100%">
+                  <img src="{{asset('imagens/subcategorias/'.$subcategoria->id.'.1.jpg')}}" class="img-fluid" width="100%" style="object-fit:cover; height:250px;">
                   <div class="portfolio-info p-3" style="color:<?php echo $configuracao->cortxt4 ?>;">
                     <h4><?php echo $subcategoria->titulo ?></h4>
                     <h6><?php echo $subcategoria->subtitulo ?></h6>

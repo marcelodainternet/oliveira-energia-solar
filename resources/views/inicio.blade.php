@@ -1,6 +1,6 @@
 @extends("layout")
 @section("head")
-    <title>{{$configuracao['titulo']}} - {{$configuracao['subtitulo']}}</title>
+    <title>{{$configuracao['titulo']}}</title>
     <style>
         .cookieConsentContainer {
             z-index: 999;
