@@ -442,7 +442,7 @@
                   </td>
 
                   <td style="width:0; white-space:nowrap;">
-                    <img width="100" class="img-thumbnail" src="{{asset('imagens/subcategorias/projeto-foto-'.$foto->id.'.jpg')}}">
+                    <!-- <img width="100" class="img-thumbnail" src="{{asset('imagens/subcategorias/projeto-foto-'.$foto->id.'.jpg')}}"> -->
                     @if (file_exists(public_path('uploads/projeto-foto-'.$foto->id.'-thumbs.jpg')))
                       <img width="100" class="img-thumbnail" src="{{asset('uploads/projeto-foto-'.$foto->id.'-thumbs.jpg')}}">
                     @endif
