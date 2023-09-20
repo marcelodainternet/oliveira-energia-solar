@@ -83,7 +83,7 @@
 
     <div class="container">
         <div class="copyright">
-            &copy; Copyright 20{{date('')}} <strong><span>Oliveira Energia Solar</span></strong>. Todos os direitos reservados.
+            &copy; Copyright {{date('Y')}} <strong>Oliveira Energia Solar</strong>. Todos os direitos reservados.
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->
