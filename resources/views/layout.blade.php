@@ -19,14 +19,14 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/libs/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/libs/purecounter/purecounter.js"></script>
-    <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+    <script src="{{url('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url('assets/libs/glightbox/js/glightbox.min.js')}}"></script>
+    <script src="{{url('assets/libs/isotope-layout/isotope.pkgd.min.js')}}"></script>
+    <script src="{{url('assets/libs/purecounter/purecounter.js')}}"></script>
+    <script src="{{url('assets/libs/swiper/swiper-bundle.min.js')}}"></script>
 
     <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script src="{{url('assets/js/main.js')}}"></script>
 
     <script>
         var purecookieTitle = "Cookies.",
