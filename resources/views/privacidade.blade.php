@@ -13,7 +13,7 @@
         </div>
         <div class="row">
           <div class="col-12">
-            {{$configuracao['privacidade']}}
+            {!!$configuracao['privacidade']!!}
           </div>
         </div>
       </div>

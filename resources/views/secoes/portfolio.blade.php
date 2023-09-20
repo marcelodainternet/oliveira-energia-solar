@@ -17,7 +17,7 @@
                         <div><?php echo $categoria->descricao ?></div>
                         <div class="portfolio-links mt-3">
                             <a href="imagens/categorias/grande/<?php echo $categoria->id ?>.1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="<?php echo $categoria->titulo ?> - <?php echo $categoria->subtitulo ?>"><i class="ri-add-fill"></i></a>
-                            <a href="categoria.php?id=<?php echo $categoria->id ?>&<?php echo $categoria->titulo ?>" title="<?php echo $categoria->titulo ?>"><i class="ri-links-fill"></i></a>
+                            <a href="{{url('categorias/'.$categoria->id)}}" title="<?php echo $categoria->titulo ?>"><i class="ri-links-fill"></i></a>
                         </div>
                     </div>
                     </div>
