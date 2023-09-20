@@ -12,7 +12,7 @@
         </div>
         <nav id="navbar" class="navbar">
             <ul>
-            <li><a class="nav-link scrollto active" href="{{url('/#vitrine')}}">Home</a></li>
+            <li><a class="nav-link scrollto active" href="{{url('/#')}}">Home</a></li>
             <li><a class="nav-link scrollto" href="{{url('/#home')}}">Energia Solar</a></li>
             <li><a class="nav-link scrollto " href="{{url('/#portfolio')}}">Portfolio</a></li>
             <li><a class="nav-link scrollto" href="{{url('/#empresa')}}">Quem Somos</a></li>
