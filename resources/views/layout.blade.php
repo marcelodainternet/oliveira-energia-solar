@@ -28,7 +28,7 @@
     <script src="{{url('assets/js/main.js')}}"></script>
 
     <script>
-        var purecookieTitle = "Cookies.",
+        /* var purecookieTitle = "Cookies.",
         purecookieDesc = "<?php echo $configuracao['info'] ?>",
         purecookieLink = '<a href="./cookies.php" target="_blank"> Ver Política de Cookies?</a>',
         purecookieButton = "Aceitar";
@@ -75,7 +75,7 @@
         }
         window.onload = function() {
             cookieConsent()
-        };
+        }; */
     </script>
 </body>
 
