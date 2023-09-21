@@ -7,7 +7,7 @@
                     <div class="swiper-wrapper align-items-center">
                         @foreach ($empresa->postagens as $postagem)
                             <div class="swiper-slide">
-                                <img class="img-fluid" src="imagens/postagens/<?php echo $postagem->id ?>.1.jpg" alt="<?php echo $postagem->titulo ?>" title="<?php echo $postagem->titulo ?>">
+                                <img class="img-fluid" src="{{asset('uploads/postagem-'.$postagem->id.'.jpg')}}" alt="<?php echo $postagem->titulo ?>" title="<?php echo $postagem->titulo ?>">
                                 <div class="portfolio-info pt-3 pb-4" style="color:<?php echo $configuracao['cortxt'] ?>; position: relative;">
                                     <h4><?php echo $postagem->titulo ?></h4>
                                     <h6><?php echo $postagem->subtitulo ?></h6>

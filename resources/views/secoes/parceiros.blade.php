@@ -13,7 +13,7 @@
                         @foreach ($parceiros->postagens as $postagem)
                             <div class="swiper-slide">
                                 <a target="_blanc" href="<?php echo $postagem->link ?>">
-                                    <img src="imagens/postagens/thumbs/<?php echo $postagem->id ?>.1.jpg" class="img-fluid" alt="<?php echo $postagem->titulo ?>" title="<?php echo $postagem->titulo ?>">
+                                    <img src="{{asset('uploads/postagem-'.$postagem->id.'-thumbs.jpg')}}" class="img-fluid" alt="<?php echo $postagem->titulo ?>" title="<?php echo $postagem->titulo ?>">
                                 </a>
                             </div>
                         @endforeach

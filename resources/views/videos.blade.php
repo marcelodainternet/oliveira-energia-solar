@@ -23,7 +23,7 @@
                     <div align="center" class="post-img">
                     <a href="<?php echo $postagem['link'] ?>" class="glightbox play-btn pt-2" style="color:<?php echo $configuracao['cortxt'] ?>;">
                         <h6><strong><?php echo $postagem['titulo'] ?></strong></h6>
-                        <img src="imagens/postagens/thumbs/<?php echo $postagem['id'] ?>.1.jpg" alt="<?php echo $postagem['titulo'] ?>" title="<?php echo $postagem['titulo'] ?>" class="img-thumbnail mb-2" width="100%">
+                        <img src="{{asset('uploads/postagem-'.$postagem->id.'-thumbs.jpg')}}" alt="<?php echo $postagem['titulo'] ?>" title="<?php echo $postagem['titulo'] ?>" class="img-thumbnail mb-2" width="100%">
                         <h6><?php echo $postagem['subtitulo'] ?></h6>
                         <div><small><?php echo $postagem['descricao'] ?></small></div>
                     </a>

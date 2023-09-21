@@ -10,13 +10,13 @@
             @foreach ($categorias as $categoria)
                 <div class="col-lg-4 portfolio-item <?php echo $categoria->titulo ?>">
                     <div class="portfolio-wrap">
-                    <img src="imagens/categorias/<?php echo $categoria->id ?>.1.jpg" class="img-fluid" width="100%">
+                    <img src="{{asset('uploads/projeto-'.$categoria->id.'.jpg')}}" class="img-fluid" width="100%">
                     <div class="portfolio-info p-3" style="color:<?php echo $configuracao['cortxt4'] ?>;">
                         <h4><?php echo $categoria->titulo ?></h4>
                         <h6><?php echo $categoria->subtitulo ?></h6>
                         <div><?php echo $categoria->descricao ?></div>
                         <div class="portfolio-links mt-3">
-                            <a href="imagens/categorias/grande/<?php echo $categoria->id ?>.1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="<?php echo $categoria->titulo ?> - <?php echo $categoria->subtitulo ?>"><i class="ri-add-fill"></i></a>
+                            <a href="{{asset('uploads/projeto-'.$categoria->id.'-grande.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="<?php echo $categoria->titulo ?> - <?php echo $categoria->subtitulo ?>"><i class="ri-add-fill"></i></a>
                             <a href="{{url('categorias/'.$categoria->id)}}" title="<?php echo $categoria->titulo ?>"><i class="ri-links-fill"></i></a>
                         </div>
                     </div>

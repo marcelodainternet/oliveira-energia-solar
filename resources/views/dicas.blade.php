@@ -34,8 +34,8 @@
                         <div class="accordion-body row">
 
                         <div class="col-md-3">
-                            <a href="imagens/postagens/grande/<?php echo $postagem->id ?>.1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="<?php echo $postagem->titulo ?> - <?php echo $postagem->subtitulo ?>">
-                            <img class="img-responsive img-thumbnail" src="imagens/postagens/thumbs/<?php echo $postagem->id ?>.1.jpg" alt="<?php echo $postagem->titulo ?>" title="<?php echo $postagem->titulo ?>">
+                            <a href="{{asset('uploads/postagem-'.$postagem->id.'-grande.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="<?php echo $postagem->titulo ?> - <?php echo $postagem->subtitulo ?>">
+                            <img class="img-responsive img-thumbnail" src="{{asset('uploads/postagem-'.$postagem->id.'-thumbs.jpg')}}" alt="<?php echo $postagem->titulo ?>" title="<?php echo $postagem->titulo ?>">
                             </a>
                         </div>
 

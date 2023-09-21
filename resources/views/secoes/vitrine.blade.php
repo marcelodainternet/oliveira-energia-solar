@@ -4,7 +4,7 @@
         <div class="swiper-wrapper align-items-center">
         @foreach ($vitrine->postagens as $postagem)
             <div class="swiper-slide">
-            <img style="min-height:600px; min-width: 100%;" class="slidevitrine" src="{{asset('imagens/postagens/grande/'.$postagem->id.'.1.jpg')}}" alt="{{$postagem->titulo}}" title="{{$postagem->titulo}}">
+            <img style="min-height:600px; min-width: 100%;" class="slidevitrine" src="{{asset('uploads/postagem-'.$postagem->id.'-grande.jpg')}}" alt="{{$postagem->titulo}}" title="{{$postagem->titulo}}">
             <div class="carousel-container carousel-item">
                 <div class="carousel-content col-10">
                 <h2 class="scrollto animate__animated animate__fadeInUp">{{$postagem->titulo}}</h2>

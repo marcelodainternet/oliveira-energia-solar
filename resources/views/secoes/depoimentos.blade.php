@@ -10,7 +10,8 @@
                 @foreach ($depoimentos->postagens as $postagem)
                     <div class="swiper-slide">
                         <div class="testimonial-item">
-                            <a href="imagens/postagens/thumbs/<?php echo $postagem->id ?>.1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="<?php echo $postagem->titulo ?> - <?php echo $postagem->subtitulo ?>"><img src="imagens/postagens/thumbs/<?php echo $postagem->id ?>.1.jpg" alt="<?php echo $postagem->titulo ?>" title="<?php echo $postagem->titulo ?>" class="testimonial-img"></a>
+                            <a href="{{asset('uploads/postagem-'.$postagem->id.'-thumbs.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="<?php echo $postagem->titulo ?> - <?php echo $postagem->subtitulo ?>">
+                                <img src="{{asset('uploads/postagem-'.$postagem->id.'-thumbs.jpg')}}" alt="<?php echo $postagem->titulo ?>" title="<?php echo $postagem->titulo ?>" class="testimonial-img"></a>
                             <h3><?php echo $postagem->titulo ?></h3>
                             <h4><?php echo $postagem->subtitulo ?></h4>
                             <p>
