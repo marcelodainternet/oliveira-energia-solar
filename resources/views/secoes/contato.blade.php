@@ -2,10 +2,10 @@
     <div class="container pb-5">
         @if ($contato->titulo != '')
             <div class="section-title">
-                <span><?php echo $contato->titulo ?></span>
-                <h2><?php echo $contato->titulo ?></h2>
-                <h4><?php echo $contato->subtitulo ?></h4>
-                <div><?php echo $contato->descricao ?></div>
+                <span>{{$contato->titulo}}</span>
+                <h2>{{$contato->titulo}}</h2>
+                <h4>{!!$contato->subtitulo!!}</h4>
+                <div>{!!$contato->descricao!!}</div>
             </div>
         @endif
 
@@ -15,16 +15,16 @@
                     <div class="address">
                         <i class="icofont-google-map"></i>
                         <h4>Atendimento:</h4>
-                        <p><?php echo $configuracao['horatend']; ?></p>
-                        <p><?php echo $configuracao['horatend2']; ?></p>
-                        <p><?php echo $configuracao['horatend3']; ?></p><br/>
+                        <p>{{$configuracao['horatend'];}}</p>
+                        <p>{{$configuracao['horatend2'];}}</p>
+                        <p>{{$configuracao['horatend3'];}}</p><br/>
                     </div>
                 </div>
                 <div class="info">
                     <div class="address">
                         <i class="icofont-google-map"></i>
                         <h4>Endereço:</h4>
-                        <p><?php echo $configuracao['endereco']; ?></p>
+                        <p>{{$configuracao['endereco'];}}</p>
                     </div>
                 </div>
             </div>
@@ -34,13 +34,13 @@
                     <div class="phone">
                         <i class="icofont-phone"></i>
                         <h4>Telefone(s):</h4>
-                        <p>+55 <?php echo $configuracao['telefone']; ?></p>
-                        <?php if ($configuracao['telefone2'] != '') { ?>
-                            <p>+55 <?php echo $configuracao['telefone2']; ?></p>
-                        <?php } ?>
-                        <?php if ($configuracao['telefone3'] != '') { ?>
-                            <p>+55 <?php echo $configuracao['telefone3']; ?></p>
-                        <?php } ?>
+                        <p>+55 {{$configuracao['telefone'];}}</p>
+                        @if($configuracao['telefone2'] != '')
+                            <p>+55 {{$configuracao['telefone2'];}}</p>
+                        @endif
+                        @if($configuracao['telefone3'] != '')
+                            <p>+55 {{$configuracao['telefone3'];}}</p>
+                        @endif
                     </div>
                     <br>
                 </div>
@@ -48,10 +48,10 @@
                     <div class="email">
                         <i class="icofont-envelope"></i>
                         <h4>E-mail(s):</h4>
-                        <p><?php echo $configuracao['email']; ?></p>
-                        <?php if ($configuracao['email2'] != '') { ?>
-                            <p><?php echo $configuracao['email2']; ?></p>
-                        <?php } ?>
+                        <p>{{$configuracao['email'];}}</p>
+                        @if ($configuracao['email2'] != '')
+                            <p>{{$configuracao['email2'];}}</p>
+                        @endif
                     </div>
                 </div>
             </div>

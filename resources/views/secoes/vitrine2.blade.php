@@ -3,7 +3,7 @@
         <div class="text-center title m-5 " style="color:{{$configuracao['cortxt4']}};">
             <h1 class="scrollto animate__animated animate__fadeInUp mb-4"><strong>{{$vitrine2->titulo}}</strong></h1>
             @if ($vitrine2->subtitulo != '')
-                <h3 class="ascrollto animate__animated animate__fadeInUp mb-4" style="color:{{$configuracao['cortxt4']}};"><?php echo $vitrine2->subtitulo ?></h3>
+                <h3 class="ascrollto animate__animated animate__fadeInUp mb-4" style="color:{{$configuracao['cortxt4']}};">{{$vitrine2->subtitulo}}</h3>
             @endif
             @if ($vitrine2->descricao != '')
                 <div class="scrollto animate__animated animate__fadeInUp">{!!$vitrine2->descricao!!}</div>
