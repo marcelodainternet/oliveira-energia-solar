@@ -1,4 +1,4 @@
-<section id="topbar" class="fixed-top d-flex" style="background-color:<?php echo $configuracao['cor2'] ?>; color:<?php echo $configuracao['cortxt4'] ?>;">
+<section id="topbar" class="fixed-top d-flex" style="background-color:{{$configuracao['cor2']}}; color:{{$configuracao['cortxt4']}};">
     <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center">
 
@@ -25,23 +25,23 @@
             @endif
 
             <i class="d-none bi bi-envelope d-md-flex align-items-center ms-4">
-                <a href="mailto:<?php echo $configuracao['email']; ?>" style="color:<?php echo $configuracao['cortxt4']; ?>;">
-                    <small><?php echo $configuracao['email'] ?></small>
+                <a href="mailto:{{$configuracao['email'];}}" style="color:{{$configuracao['cortxt4'];}};">
+                    <small>{{$configuracao['email']}}</small>
                 </a>
             </i>
         </div>
         <div class="social-links d-none d-md-flex align-items-center" style="gap: 1rem;">
             @if($configuracao['facebook'] != '')
-                <a target="_blanc" href="<?php echo $configuracao['facebook'] ?>" class="facebook p-0 border-0" style="color:<?php echo $configuracao['cortxt4'] ?>;"><i class="bi bi-facebook"></i></a>
+                <a target="_blanc" href="{{$configuracao['facebook']}}" class="facebook p-0 border-0" style="color:{{$configuracao['cortxt4']}};"><i class="bi bi-facebook"></i></a>
             @endif
             @if($configuracao['instagram'] != '')
-                <a target="_blanc" href="<?php echo $configuracao['instagram'] ?>" class="instagram p-0 border-0" style="color:<?php echo $configuracao['cortxt4'] ?>;"><i class="bi bi-instagram"></i></a>
+                <a target="_blanc" href="{{$configuracao['instagram']}}" class="instagram p-0 border-0" style="color:{{$configuracao['cortxt4']}};"><i class="bi bi-instagram"></i></a>
             @endif
             @if($configuracao['twitter'] != '')
-                <a target="_blanc" href="<?php echo $configuracao['twitter'] ?>" class="twitter p-0 border-0" style="color:<?php echo $configuracao['cortxt4'] ?>;"><i class="bi bi-twitter"></i></a>
+                <a target="_blanc" href="{{$configuracao['twitter']}}" class="twitter p-0 border-0" style="color:{{$configuracao['cortxt4']}};"><i class="bi bi-twitter"></i></a>
             @endif
             @if($configuracao['linkedin'] != '')
-                <a target="_blanc" href="<?php echo $configuracao['linkedin'] ?>" class="linkedin p-0 border-0" style="color:<?php echo $configuracao['cortxt4'] ?>;"><i class="bi bi-linkedin"></i></i></a>
+                <a target="_blanc" href="{{$configuracao['linkedin']}}" class="linkedin p-0 border-0" style="color:{{$configuracao['cortxt4']}};"><i class="bi bi-linkedin"></i></i></a>
             @endif
         </div>
     </div>

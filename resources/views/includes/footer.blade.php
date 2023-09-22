@@ -90,7 +90,7 @@
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mybiz-free-business-bootstrap-theme/ -->
-            Desenvolvido por <a target="_blanc" href="https://genesisaweb.com.br/">Marcelo Silveira</a>
+            Desenvolvido por <a target="_blanc" href="https://api.whatsapp.com/send?phone=5548998327848&text=Olá Marcelo venho do site OLIVEIRA ENERGIA SOLAR, você pode me atender?" target="_blank">Marcelo Silveira</a>
         </div>
     </div>
 </footer>

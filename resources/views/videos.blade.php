@@ -11,7 +11,7 @@
                 <span>{{$videos->titulo}}</span>
                 <h2>{{$videos->titulo}}</h2>
                 <h4>{{$videos->subtitulo}}</h4>
-                <div>{{$videos->descricao}}</div>
+                <div>{!!$videos->descricao!!}</div>
             </div>
             
             <div class="row justify-content-center">
@@ -25,7 +25,7 @@
                         <h6><strong>{{$postagem['titulo']}}</strong></h6>
                         <img src="{{asset('uploads/postagem-'.$postagem->id.'-thumbs.jpg')}}" alt="{{$postagem['titulo']}}" title="{{$postagem['titulo']}}" class="img-thumbnail mb-2" width="100%">
                         <h6>{{$postagem['subtitulo']}}</h6>
-                        <div><small>{{$postagem['descricao']}}</small></div>
+                        <div><small>{!!$postagem['descricao']!!}</small></div>
                     </a>
                     </div>
                 </div>

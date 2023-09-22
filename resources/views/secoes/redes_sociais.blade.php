@@ -1,10 +1,10 @@
 <section id="team" class="team" style="margin-top:-40px;">
     <div class="container">
         <div class="section-title">
-            <span><?php echo $redes_sociais->titulo ?></span>
-            <h2><?php echo $redes_sociais->titulo ?></h2>
-            <h4><?php echo $redes_sociais->subtitulo ?></h4>
-            <div><?php echo $redes_sociais->descricao ?></div>
+            <span>{{$redes_sociais->titulo}}</span>
+            <h2>{{$redes_sociais->titulo}}</h2>
+            <h4>{{$redes_sociais->subtitulo}}</h4>
+            <div>{!!$redes_sociais->descricao!!}</div>
         </div>
         <div class="row justify-content-center">
             @if ($configuracao['instagram'] != '')
@@ -19,8 +19,8 @@
                     <h3><strong>Facebook</strong></h3>
                     <div id="fb-root"></div>
                     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v12.0" nonce="XOLK1blf"></script>
-                    <div class="fb-page" data-href="<?php echo $configuracao['facebook'] ?>" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                    <blockquote cite="<?php echo $configuracao['facebook'] ?>" class="fb-xfbml-parse-ignore"><a href="<?php echo $configuracao['facebook'] ?>"><?php echo $redes_sociais->titulo ?></a></blockquote>
+                    <div class="fb-page" data-href="{{$configuracao['facebook']}}" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                    <blockquote cite="{{$configuracao['facebook']}}" class="fb-xfbml-parse-ignore"><a href="{{$configuracao['facebook']}}">{{$redes_sociais->titulo}}</a></blockquote>
                     </div>
                 </div>
             @endif
