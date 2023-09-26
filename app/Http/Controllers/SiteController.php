@@ -7,6 +7,7 @@ use App\Models\Secao;
 use App\Models\Configuracao;
 use App\Models\Categoria;
 use App\Models\Lead;
+use Exception;
 
 class SiteController extends Controller
 {
@@ -60,13 +61,17 @@ class SiteController extends Controller
 
     function leadStore(Request $request)
     {
-       // dd($request->nome);
-        Lead::insert([
-            "nome" => $request->nome,
-            "telefone" => $request->telefone,
-            "email" => $request->email
-        ]);
-        return redirect('/#lead-enviada')->with('lead-enviada',true);
+        try {
+            Lead::insert([
+                "nome" => $request->nome,
+                "telefone" => $request->telefone,
+                "email" => $request->email
+            ]);
+
+            return response()->json(["lead_enviada" => true]);
+        } catch (Exception $exception) {
+            return response()->json(["lead_enviada" => false, "error" => $exception->getMessage()]);
+        }
     }
 
     function mostrarCategoria($categoria)
@@ -95,7 +100,6 @@ class SiteController extends Controller
     function enviarContato(Request $request)
     {
         //dd($request->all());
-        return redirect('/#mail')->with('email-enviado',true);
+        return redirect('/#mail')->with('email-enviado', true);
     }
-    
 }

@@ -71,16 +71,22 @@
                 <div class="col-lg-4 col-md-6 footer-newsletter">
                     <h4>Nosso Newsletter</h4>
                     <p>Deixe seu e-mail e receba nossas atualizações e novidades.</p>
-                    @if(session()->has('lead-enviada'))
-                    <div id="lead-enviada" class="alert alert-seccess">Dados enviados com sucesso!</div>
-                    @endif
-                    <form method="post" action="{{url('/lead')}}">
+                    <form method="post" id="form-newsletter" action="{{url('/lead')}}">
                         @csrf
-                        <input type="text" name="nome" id="nome" placeholder="Nome" required>
-                        <input type="tel" name="telefone" id="telefone" placeholder="Whatsapp" required>
-                        <input type="email" name="email" id="email" placeholder="E-mail" required>
-                        <input type="submit" value="Enviar">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required>
+                        </div>
+                        <div class="form-group" style="margin-top:10px;">  
+                            <input type="tel" class="form-control" name="telefone" id="telefone" placeholder="Whatsapp" required>
+                        </div>
+                        <div class="form-group" style="margin-top:10px;">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" required>
+                        </div>
+                        <div class="form-group" style="margin-top:10px;">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
                     </form>
+                    <div id="lead-resposta" class="alert" style="margin-top:30px; visibility: hidden;" data-success="Dados enviados com sucesso!" data-fail="Erro ao enviar dados!"></div>
                 </div>
             </div>
         </div>
@@ -99,3 +105,51 @@
         </div>
     </div>
 </footer>
+<script>
+    window.addEventListener("load", () => {
+        let formNewsletter = document.querySelector("#form-newsletter");
+        formNewsletter.addEventListener("submit", (event) => {
+            event.preventDefault();
+            let method = formNewsletter.getAttribute("method");
+            let action = formNewsletter.getAttribute("action");
+            fetch(action, {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': formNewsletter._token.value
+                },
+                body: JSON.stringify({nome: formNewsletter.nome.value, telefone: formNewsletter.telefone.value, email: formNewsletter.email.value})
+            })
+            .then(response => response.text())
+            .then(response => JSON.parse(response))
+            .then(response => {
+                if(response.lead_enviada) {
+                    formNewsletter.nome.value = "";
+                    formNewsletter.telefone.value = "";
+                    formNewsletter.email.value = "";    
+                    document.querySelector("#lead-resposta").innerText = document.querySelector("#lead-resposta").getAttribute("data-success");
+                    document.querySelector("#lead-resposta").classList.add("alert-success");
+                }else{
+                    document.querySelector("#lead-resposta").innerText = document.querySelector("#lead-resposta").getAttribute("data-fail");
+                    document.querySelector("#lead-resposta").classList.add("alert-danger");
+                }
+                document.querySelector("#lead-resposta").style.visibility = "visible";
+                setTimeout(() => {
+                    document.querySelector("#lead-resposta").classList.remove("alert-danger");
+                    document.querySelector("#lead-resposta").classList.remove("alert-success");
+                    document.querySelector("#lead-resposta").style.visibility = "hidden";
+                }, 5000);
+            })
+            .catch((error) => {
+                document.querySelector("#lead-resposta").innerText = document.querySelector("#lead-resposta").getAttribute("data-fail");
+                document.querySelector("#lead-resposta").classList.add("alert-danger");
+                document.querySelector("#lead-resposta").style.visibility = "visible";
+                setTimeout(() => {
+                    document.querySelector("#lead-resposta").classList.remove("alert-danger");
+                    document.querySelector("#lead-resposta").classList.remove("alert-success");
+                    document.querySelector("#lead-resposta").style.visibility = "hidden";
+                }, 5000);
+            });
+        });
+    });
+</script>
