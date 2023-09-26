@@ -29,16 +29,17 @@ Route::group(["prefix" => "adm"], function () {
         Route::get('/secoes/{secao?}', [AdminController::class, 'secoes'])->name("secoes");
         Route::put('/secoes/{secao}', [AdminController::class, 'atualizarSecao'])->name("secoes.atualizar");
         Route::delete('/secoes/{secao}', [AdminController::class, 'excluirSecao'])->name("secoes.excluir");
-
         Route::get('/secoes/{secao}/postagens/{postagem?}', [AdminController::class, 'postagens'])->name("postagens");
+        Route::post('/secoes/{secao}/postagens', [AdminController::class, 'inserirPostagem'])->name("postagens.inserir");
         Route::put('/secoes/{secao}/postagens/{postagem}', [AdminController::class, 'atualizarPostagem'])->name("postagens.atualizar");
         Route::delete('/secoes/{secao}/postagens/{postagem}', [AdminController::class, 'excluirPostagem'])->name("postagens.excluir");
 
         Route::get('/projetos/{projeto?}', [AdminController::class, 'projetos'])->name("projetos");
+        Route::post('/projetos', [AdminController::class, 'inserirProjeto'])->name("projetos.inserir");
         Route::put('/projetos/{projeto}', [AdminController::class, 'atualizarProjeto'])->name("projetos.atualizar");
         Route::delete('/projetos/{projeto}', [AdminController::class, 'excluirProjeto'])->name("projetos.excluir");
-
         Route::get('/projetos/{projeto}/fotos/{foto?}', [AdminController::class, 'fotos'])->name("fotos");
+        Route::post('/projetos/{projeto}/fotos', [AdminController::class, 'inserirFoto'])->name("fotos.inserir");
         Route::put('/projetos/{projeto}/fotos/{foto}', [AdminController::class, 'atualizarFoto'])->name("fotos.atualizar");
         Route::delete('/projetos/{projeto}/fotos/{foto}', [AdminController::class, 'excluirFoto'])->name("fotos.excluir");
 
