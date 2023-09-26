@@ -15,7 +15,7 @@
 <meta name="msapplication-TitleColor" content="{{$configuracao['cor']}}">
 <meta name="theme-color" content="{{$configuracao['cor']}}">
 
-<link rel="manifest" href="manifest.json">
+<!-- <link rel="manifest" href="manifest.json"> -->
 <link rel="canonical" href="https://{{$configuracao['site']}}">
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.png')}}">
 <link rel="apple-touch-icon" sizes="152x152" href="{{asset('assets/img/favicon.png')}}">
