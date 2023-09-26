@@ -84,5 +84,5 @@
         @include('secoes.contato')
         @include('secoes.redes_sociais')
     </main>
-    <!-- <div id="preloader" style="background:{{$configuracao['cor']}};"></div> -->
+    <div id="preloader" style="background:{{$configuracao['cor']}};"></div>
 @endsection
