@@ -21,141 +21,19 @@
       <div class="row">
         <div class="col-md-12">
           @if(session()->get("saved"))
-            <h3 class="alert alert-success" role="alert">Configuração alterada com sucesso!
-              <button type="button" class="close" data-dismiss="alert"> <i class="ace-icon fa fa-times"></i> </button>
-            </h3>
+            <div class="alert alert-success" role="alert">Configuração alterada com sucesso!
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+            </div>
           @endif
           <form method="post" action="{{route('configuracoes.atualizar')}}" enctype="multipart/form-data">
             @csrf
+            @method('put')
             <fieldset>
               <div class="row">
-                <!--
-                  <div class="form-group col-md-4">
-                    <label>Nome do responsável:</label>
-                    <input type="text" class="form-control" name="nome" id="nome" value="<?php //echo $nome; ?>">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label>Telefone do responsável:</label>
-                    <input type="text" class="form-control" name="fone" id="fone" value="<?php //echo $fone; ?>">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label>E-mail do responsável:</label>
-                    <input type="text" class="form-control" name="mail" id="mail" value="<?php //echo $mail; ?>">
-                  </div>
-                  <div class="form-group col-md-2">
-                    <label>Cor Primária:</label>
-                    <input type="text" class="form-control" name="cor" id="cor" value="<?php //echo $cor; ?>">
-                  </div>
-                  <div class="form-group col-md-2">
-                    <label>Cor Segundária:</label>
-                    <input type="text" class="form-control" name="cor2" id="cor2" value="<?php //echo $cor2; ?>">
-                  </div>
-                  <div class="form-group col-md-2">
-                    <label>Cor Terciária:</label>
-                    <input type="text" class="form-control" name="cor3" id="cor3" value="<?php //echo $cor3; ?>">
-                  </div>
-                  <div class="form-group col-md-2">
-                    <label>Cor Quarta:</label>
-                    <input type="text" class="form-control" name="cor4" id="cor4" value="<?php //echo $cor4; ?>">
-                  </div>
-                  <div class="form-group col-md-2">
-                    <label>Cor Quinta:</label>
-                    <input type="text" class="form-control" name="cor5" id="cor5" value="<?php //echo $cor5; ?>">
-                  </div>
-                  <div class="form-group col-md-2">
-                    <label>Cor Sexta:</label>
-                    <input type="text" class="form-control" name="cor6" id="cor6" value="<?php //echo $cor6; ?>">
-                  </div>
-                  <div class="form-group col-md-2">
-                    <label>Cor TXT Primária:</label>
-                    <input type="text" class="form-control" name="cortxt" id="cortxt" value="<?php //echo $cortxt; ?>">
-                  </div>
-                  <div class="form-group col-md-2">
-                    <label>Cor TXT Segund.:</label>
-                    <input type="text" class="form-control" name="cortxt2" id="cortxt2" value="<?php //echo $cortxt2; ?>">
-                  </div>
-                  <div class="form-group col-md-2">
-                    <label>Cor TXT Terciária:</label>
-                    <input type="text" class="form-control" name="cortxt3" id="cortxt3" value="<?php //echo $cortxt3; ?>">
-                  </div>
-                  <div class="form-group col-md-2">
-                    <label>Cor TXT Quarta:</label>
-                    <input type="text" class="form-control" name="cortxt4" id="cortxt4" value="<?php //echo $cortxt4; ?>">
-                  </div>
-                  <div class="form-group col-md-2">
-                    <label>Cor TXT Quinta:</label>
-                    <input type="text" class="form-control" name="cortxt5" id="cortxt5" value="<?php //echo $cortxt5; ?>">
-                  </div>
-                  <div class="form-group col-md-2">
-                    <label>Cor TXT Sexta:</label>
-                    <input type="text" class="form-control" name="cortxt6" id="cortxt6" value="<?php //echo $cortxt6; ?>">
-                  </div>
-                -->
-                <!-- Multiple Checkboxes (inline) background 
-                  <div class="form-group col-md-2">
-                    <label>Cor de Fundo</label>
-                    <input type="text" id="background_color" name="background_color" placeholder="" class="form-control" value="<?php //echo $background_color ?>">
-                  </div> 
-                -->
-                <!-- Select Secao  
-                  <div class="form-group col-md-2">
-                    <label>Alinhamento</label>
-                    <select name="alinhamento" id="alinhamento" class="form-control">
-                      <option selected="selected"><?php //echo $alinhamento; ?></option>
-                      <option value="Center">Center</option>
-                      <option value="Left">Left</option>
-                      <option value="Right">Right</option>
-                    </select>
-                  </div>
-                -->
-                <!-- Multiple Checkboxes (inline) container
-                  <div align="left" class="form-group col-md-2">
-                    <label class="control-label" for="container">Container:</label><br>
-                      <label class="checkbox-inline" for="container-0">
-                        <input type="checkbox" id="container-0"  name="container"value="1" <?php //if ($container == 1) { ?>checked="checked"<?php //} ?> >
-                        SIM </label>
-                  </div>
-                -->
-                <!-- Multiple Checkboxes (inline) Borda 
-                  <div align="left" class="form-group col-md-2">
-                    <label class="control-label" for="borda">Borda:</label><br>
-                      <label class="checkbox-inline" for="borda-0">
-                        <input type="checkbox" id="borda-0"  name="borda"value="1" <?php //if ($borda == 1) { ?>checked="checked"<?php //} ?> >
-                        SIM </label>
-                  </div>
-                -->
-                <!-- Multiple Checkboxes (inline) Arredondado
-                  <div align="left" class="form-group col-md-2">
-                    <label class="control-label" for="arredondado">Arredondado:</label><br>
-                      <label class="checkbox-inline" for="arredondado-0">
-                        <input type="checkbox" id="arredondado-0"  name="arredondado"value="1" <?php //if ($arredondado == 1) { ?>checked="checked"<?php //} ?> >
-                        SIM </label>
-                  </div>
-                -->
-                <!-- Multiple Checkboxes (inline) Sombra
-                  <div align="left" class="form-group col-md-2">
-                    <label class="control-label" for="sombra">Sombra:</label><br>
-                      <label class="checkbox-inline" for="sombra-0">
-                        <input type="checkbox" id="sombra-0"  name="sombra"value="1" <?php //if ($sombra == 1) { ?>checked="checked"<?php //} ?> >
-                        SIM </label>
-                  </div>
-                -->
-              </div>
-              <div class="row">
-
                 <div class="form-group col-md-5">
                   <label>Imagem</label><br>
-                  <x-upload-image fallback="{{asset('/admin/assets/img/padrao.jpg')}}" path="uploads/imagem-principal.jpg" name="imagem"/>
+                  <x-upload-image fallback="{{asset('assets/img/padrao.png')}}" path="uploads/imagem-principal.jpg" name="imagem"/>
                 </div>
-
-                <!-- Multiple Checkboxes (inline) Parallax 
-                  <div align="left" class="form-group col-md-2">
-                    <label class="control-label" for="parallax">Parallax:</label><br>
-                      <label class="checkbox-inline" for="parallax-0">
-                        <input type="checkbox" id="parallax-0"  name="parallax"value="1" <?php //if ($parallax == 1) { ?>checked="checked"<?php //} ?> >
-                        SIM </label>
-                  </div>
-                -->
               </div>
               <div class="row">
                 <div class="form-group col-md-4">
@@ -206,16 +84,6 @@
                   <label>Endereço completo:</label>
                   <input type="text" class="form-control" name="endereco" id="endereco" value="{{$configuracao['endereco']}}">
                 </div>
-                <!--
-                  <div class="form-group col-md-12">
-                    <label>Endereço Completo 2:</label>
-                    <input type="text" class="form-control" name="endereco2" id="vendereco2" value="{{$configuracao['endereco2']}}">
-                  </div>
-                  <div class="form-group col-md-12">
-                    <label>Endereço Completo 3:</label>
-                    <input type="text" class="form-control" name="endereco3" id="endereco3" value="{{$configuracao['endereco3']}}">
-                  </div>
-                -->
                 <div class="form-group col-md-4">
                   <label>Horário de Atendimento:</label>
                   <input type="text" class="form-control" name="horatend" id="horatend" value="{{$configuracao['horatend']}}">
