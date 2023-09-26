@@ -13,6 +13,7 @@ Route::post('/lead', [SiteController::class, 'leadStore']);
 Route::get('/categorias/{categoria}', [SiteController::class, 'mostrarCategoria']);
 Route::get('/privacidade', [SiteController::class, 'privacidade']);
 Route::get('/termos', [SiteController::class, 'termos']);
+Route::post('/contato', [SiteController::class, 'enviarContato']);
 
 Route::group(["prefix" => "adm"], function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');

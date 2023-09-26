@@ -60,15 +60,13 @@ class SiteController extends Controller
 
     function leadStore(Request $request)
     {
+       // dd($request->nome);
         Lead::insert([
-            "nome" => $request->nome ?? '',
-            "empresa" => $request->empresa ?? '',
-            "telefone" => $request->telefone ?? '',
-            "fonte" => $request->fonte ?? '',
-            "observacao" => $request->observacao ?? '',
+            "nome" => $request->nome,
+            "telefone" => $request->telefone,
             "email" => $request->email
         ]);
-        return back();
+        return redirect('/#lead-enviada')->with('lead-enviada',true);
     }
 
     function mostrarCategoria($categoria)
@@ -93,4 +91,11 @@ class SiteController extends Controller
 
         return view("termos", compact("configuracao"));
     }
+
+    function enviarContato(Request $request)
+    {
+        //dd($request->all());
+        return redirect('/#mail')->with('email-enviado',true);
+    }
+    
 }

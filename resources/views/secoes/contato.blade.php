@@ -58,10 +58,13 @@
         </div>
 
         <br><br>
-        <!-- 
             <div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="200">
                 <div id="mail">
-                    <form action="enviar.php" method="post" role="form" class="php-email-form">
+                @if(session()->has('email-enviado'))
+                    <div id="mail-enviado" class="alert alert-seccess">E-mail enviado com sucesso!</div>
+                    @endif
+                    <form action="{{url('/contato')}}" method="post" role="form" class="php-email-form">
+                        @csrf
                         <div class="form-row">
                         <div class="col-md-5 form-group">
                         <label>Nome:</label>
@@ -100,7 +103,6 @@
                     </form>
                 </div>
             </div>
-        -->
     </div>
     <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1zipTVRzb0nf1GmW6YzahW796CuctI7JD&ehbc=2E312F" width="100%" height="400"></iframe>
 </section>

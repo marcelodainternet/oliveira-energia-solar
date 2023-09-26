@@ -71,9 +71,14 @@
                 <div class="col-lg-4 col-md-6 footer-newsletter">
                     <h4>Nosso Newsletter</h4>
                     <p>Deixe seu e-mail e receba nossas atualizações e novidades.</p>
+                    @if(session()->has('lead-enviada'))
+                    <div id="lead-enviada" class="alert alert-seccess">Dados enviados com sucesso!</div>
+                    @endif
                     <form method="post" action="{{url('/lead')}}">
                         @csrf
-                        <input type="email" name="email" id="email" placeholder="Entre com seu e-mail">
+                        <input type="text" name="nome" id="nome" placeholder="Nome" required>
+                        <input type="tel" name="telefone" id="telefone" placeholder="Whatsapp" required>
+                        <input type="email" name="email" id="email" placeholder="E-mail" required>
                         <input type="submit" value="Enviar">
                     </form>
                 </div>
