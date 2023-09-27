@@ -3,68 +3,6 @@
     <title>Usuários - Admin</title>
 @endsection
 @section("content")
-    <?php 
-        /* include('inc.conecta.php'); 
-
-        if ( isset( $_GET['action'] ) && $_GET['action'] == 'incluir' )
-        {
-            if ( isset( $_POST['usuario'] ) && !empty( $_POST['usuario'] ) && isset( $_POST['senha'] ) && !empty( $_POST['senha'] ) )
-            {
-                $senha = md5( trim( $_POST['senha'] ) );
-                $email = trim( $_POST['email'] );
-                $telefone = trim( $_POST['telefone'] );
-                $usuario = trim( $_POST['usuario'] );
-                $nome = trim( $_POST['nome'] );
-                $db->query( "insert into usuarios (usuario,senha,email,telefone,nome) values ('$usuario','$senha','$email','$telefone','$nome');" );
-                @header( 'Location: usuarios.php?success' );
-            }
-            else
-            {
-                @header( 'Location: usuarios.php?error&action=novo' );
-            }
-        }
-
-        if ( isset( $_GET['action'] ) && $_GET['action'] == 'atualiza' )
-        {
-            if ( isset( $_POST['usuario'] ) && !empty( $_POST['usuario'] ) )
-            {
-                $id = $_GET['id'];
-                $nome = trim( $_POST['nome'] );
-                $usuario = trim( $_POST['usuario'] );
-                $telefone = trim( $_POST['telefone'] );
-                $email = trim( $_POST['email'] );
-
-                $cond = " set nome = '$nome', usuario = '$usuario', telefone = '$telefone', email = '$email' ";
-                if ( isset( $_POST['senha'] ) && $_POST['senha'] != "" )
-                {
-                    $senha = md5( trim( $_POST['senha'] ) );
-                    $cond .= ", senha = '$senha' ";
-                }
-                $db->query( "update usuarios  $cond where id = $id" );
-                @header( 'Location: usuarios.php?success' );
-            }
-        }
-
-        if ( isset( $_GET['action'] ) && $_GET['action'] == 'remove' )
-        {
-            if ( isset( $_GET['id'] ) && !empty( $_GET['id'] ) )
-            {
-                $id = $_GET['id'];
-                $db->query( "delete from usuarios where id = $id" );
-                @header( 'Location: usuarios.php?success' );
-            }
-        }
-
-        if ( isset( $_GET['success'] ) )
-        {
-            echo "<script>window.onload = function(){notify('<h1>Dados Atualizados</h1>')}</script>";
-        }
-        if ( isset( $_GET['error'] ) )
-        {
-            echo "<script>window.onload = function(){notify('<h1>Informe todos os dados!</h1>')}</script>";
-        } */
-    ?>
-
     <div class="row">
         <div class="col-md-12">
             <h2 class="page-head-line"><a href="{{url('/adm')}}"><i class="ace-icon fa fa-home home-icon"></i></a> | USUÁRIOS</h2>
@@ -84,36 +22,43 @@
                                     <h4 class="modal-title" id="meuModalLabel">Novo Usuário</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form id="criar-usuario" method="post" class="form" onSubmit="return valida()" action="usuarios.php?action=incluir">
+                                    <form id="form-criar-usuario" method="post" action="{{route('usuarios.inserir')}}" class="form">
+                                        @csrf
                                         <div class="form-group">
                                             <label class="control-label">Nome*: </label>
                                             <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required>
+                                            <span class="help-block"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">Usuário para login*: </label>
                                             <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuário" required>
+                                            <span class="help-block"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">Telefone: </label>
-                                            <input type="text" name="telefone" id="telefone" class="form-control" placeholder="Telefone" >
+                                            <input type="text" name="telefone" id="telefone" class="form-control" placeholder="Telefone">
+                                            <span class="help-block"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">E-mail*: </label>
                                             <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" required>
+                                            <span class="help-block"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">Senha*: </label>
-                                            <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha">
+                                            <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" required>
+                                            <span class="help-block"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">Confirme a senha*: </label>
-                                            <input type="password" name="confirmar_senha" id="confirmar_senha" class="form-control" placeholder="Confirme a senha">
+                                            <input type="password" name="confirmar_senha" id="confirmar_senha" class="form-control" placeholder="Confirme a senha" required>
+                                            <span class="help-block"></span>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                                    <button form="criar-usuario" type="submit" class="btn btn-primary">Cadastrar</button>
+                                    <button form="form-criar-usuario" type="submit" class="btn btn-primary">Cadastrar</button>
                                 </div>
                             </div>
                         </div>
@@ -123,6 +68,11 @@
                 @endif
             </div>
             <hr>
+            @if(session()->get("excluido"))
+                <div class="alert alert-success" role="alert">Usuário excluído com sucesso!
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+                </div>
+            @endif
             <strong>Usuários cadastrados:</strong>
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover text-center">
@@ -138,15 +88,14 @@
                     <tbody>
                         @foreach($usuarios as $usuario)
                             <tr>
-                                <td>{{$usuario->nome}}</td>
-                                <td>{{$usuario->usuario}}</td>
-                                <td>{{$usuario->telefone}}</td>
-                                <td>{{$usuario->email}}</td>
+                                <td style="vertical-align: middle;">{{$usuario->nome}}</td>
+                                <td style="vertical-align: middle;">{{$usuario->usuario}}</td>
+                                <td style="vertical-align: middle;">{{$usuario->telefone}}</td>
+                                <td style="vertical-align: middle;">{{$usuario->email}}</td>
                                 <td style="width:0; white-space:nowrap;">
-                                    <button data-toggle="modal" data-target="#editar-usuario-{{$usuario->id}}" class="btn btn-sm btn-primary with-tip edit" title="editar usuário" id="{{$usuario->id}}" href="usuarios.php?edit={{$usuario->id}}">
+                                    <button data-toggle="modal" data-target="#editar-usuario-{{$usuario->id}}" class="btn btn-sm btn-primary with-tip edit" title="editar usuário" id="{{$usuario->id}}">
                                         Editar
                                     </button>
-
                                     <div class="modal fade" id="editar-usuario-{{$usuario->id}}" tabindex="-1" role="dialog" aria-labelledby="meuModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -155,43 +104,72 @@
                                                     <h4 class="modal-title" id="meuModalLabel">Editar Usuário</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form id="atualizar-usuario" method="post" class="form" onSubmit="return valida()" action="usuarios.php?action=atualiza&id=<?php echo $usuario->id ?>">
+                                                    <form class="form-atualizar-usuario" id="atualizar-usuario-{{$usuario->id}}" method="post" action="{{route('usuarios.atualizar', ['usuario' => $usuario->id])}}" class="form" onSubmit="return valida()" action="usuarios.php?action=atualiza&id=<?php echo $usuario->id ?>">
+                                                        @csrf
+                                                        @method('put')
                                                         <div class="form-group">
                                                             <label class="control-label">Nome*: </label>
-                                                            <input type="text" name="nome" id="nome" class="form-control" value="<?php echo $usuario->nome ?>">
+                                                            <input type="text" name="nome" class="form-control" value="{{$usuario->nome}}">
+                                                            <span class="help-block"></span>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Usuário para login*: </label>
-                                                            <input type="text" name="usuario" id="usuario" class="form-control" value="<?php echo $usuario->usuario ?>">
+                                                            <input type="text" name="usuario" class="form-control" value="{{$usuario->usuario}}">
+                                                            <span class="help-block"></span>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">Telefone: </label>
-                                                            <input type="text" name="telefone" id="telefone" class="form-control" value="<?php echo $usuario->telefone ?>">
+                                                            <input type="text" name="telefone" class="form-control" value="{{$usuario->telefone}}">
+                                                            <span class="help-block"></span>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label">E-mail*: </label>
-                                                            <input type="text" name="email" id="email" class="form-control" value="<?php echo $usuario->email ?>">
+                                                            <input type="text" name="email" class="form-control" value="{{$usuario->email}}">
+                                                            <span class="help-block"></span>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label">Senha*: </label>
-                                                            <input type="password" name="senha" id="senha" class="form-control" placeholder="Altere a Senha" >
+                                                            <label class="control-label">Senha: </label>
+                                                            <input type="password" name="senha" class="form-control" placeholder="Altere a Senha">
+                                                            <span class="help-block"></span>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label">Confirme a senha*: </label>
-                                                            <input type="password" name="senha" id="senha" class="form-control" placeholder="Altere a Senha" >
+                                                            <label class="control-label">Confirme a senha: </label>
+                                                            <input type="password" name="confirmar_senha" class="form-control" placeholder="Altere a Senha">
+                                                            <span class="help-block"></span>
                                                         </div>
                                                     </form>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                                                    <button form="atualizar-usuario" type="submit" class="btn btn-primary">Salvar</button>
+                                                    <button form="atualizar-usuario-{{$usuario->id}}" type="submit" class="btn btn-primary">Salvar</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="btn btn-sm btn-danger with-tip delete" title="remover usuário" id="{{$usuario->id}}" href="usuarios.php?action=remove&id=$u->id" onclick="return confirmLink(this, 'excluir este item?')">
+                                    <button data-toggle="modal" data-target="#excluir-usuario-{{$usuario->id}}" class="btn btn-sm btn-danger with-tip delete" title="remover usuário" id="{{$usuario->id}}">
                                         Excluir
-                                    </a>
+                                    </button>
+                                    <div class="modal fade" id="excluir-usuario-{{$usuario->id}}" tabindex="-1" role="dialog" aria-labelledby="meuModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    <h4 class="modal-title" id="meuModalLabel">Excluir Usuário</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Deseja realmente excluir este usuário?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                    <form id="form-excluir-usuario-{{$usuario->id}}" method="post" action="{{route('usuarios.excluir', ['usuario' => $usuario->id])}}" class="form" style="display: inline-block;">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-danger">Excluir</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
@@ -200,4 +178,29 @@
             </div>
         </div>
     </div>
+    <script>
+        window.addEventListener("load", () => {
+            document.querySelectorAll(".form-atualizar-usuario, #form-criar-usuario").forEach(form => {
+                form.addEventListener("submit", (event) => {
+                    event.preventDefault();
+                
+                    form.querySelectorAll('.form-group').forEach(formGroup => {
+                        formGroup.classList.remove('has-error');
+                        formGroup.querySelector('.help-block').textContent = '';
+                    });
+
+                    let isValid = true;
+
+                    if (form.senha.value !== "" && form.senha.value !== form.confirmar_senha.value) {
+                        form.confirmar_senha.parentNode.classList.add('has-error');
+                        form.confirmar_senha.nextElementSibling.textContent = 'As senhas não conferem.';
+                        form.confirmar_senha.focus();
+                        isValid = false;
+                    }
+
+                    if (isValid) form.submit();
+                });
+            });
+        });
+    </script>
 @endsection

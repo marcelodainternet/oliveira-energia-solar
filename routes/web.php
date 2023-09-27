@@ -50,7 +50,7 @@ Route::group(["prefix" => "adm"], function () {
 
         Route::get('/usuarios', [AdminController::class, 'usuarios'])->name("usuarios");
         Route::post('/usuarios', [AdminController::class, 'inserirUsuario'])->name("usuarios.inserir");
-        Route::put('/usuarios', [AdminController::class, 'atualizarUsuario'])->name("usuarios.atualizar");
-        Route::delete('/usuarios', [AdminController::class, 'excluirUsuario'])->name("usuarios.excluir");
+        Route::put('/usuarios/{usuario}', [AdminController::class, 'atualizarUsuario'])->name("usuarios.atualizar");
+        Route::delete('/usuarios/{usuario}', [AdminController::class, 'excluirUsuario'])->name("usuarios.excluir");
     });
 });

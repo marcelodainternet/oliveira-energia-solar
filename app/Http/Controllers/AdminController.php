@@ -300,9 +300,9 @@ class AdminController extends Controller
         Usuario::create([
             'nome' => $request->nome,
             'usuario' => $request->usuario,
-            'telefone' => $request->telefone,
+            'telefone' => $request->telefone ?? '',
             'email' => $request->email,
-            'senha' => $request->senha
+            'senha' => md5($request->senha)
         ]);
 
         return back()->with("inserido", true);
@@ -313,20 +313,22 @@ class AdminController extends Controller
         $request->validate([
             'nome' => ['required'],
             'usuario' => ['required'],
-            'email' => ['required'],
-            'senha' => ['required'],
-            'confirmar_senha' => ['required']
+            'email' => ['required']
         ]);
 
-        if ($request->senha != $request->confirmar_senha) return back()->withErrors(['confirmar_senha' => 'Senhas não conferem.'])->onlyInput('confirmar_senha');
-
-        Usuario::find($usuario)->update([
+        $data = [
             'nome' => $request->nome,
             'usuario' => $request->usuario,
-            'telefone' => $request->telefone,
-            'email' => $request->email,
-            'senha' => $request->senha
-        ]);
+            'telefone' => $request->telefone ?? '',
+            'email' => $request->email
+        ];
+
+        if ($request->senha) {
+            if ($request->senha != $request->confirmar_senha) return back()->withErrors(['confirmar_senha' => 'Senhas não conferem.'])->onlyInput('confirmar_senha');
+            $data['senha'] = md5($request->senha);
+        }
+
+        Usuario::find($usuario)->update($data);
 
         return back()->with("atualizado", true);
     }
