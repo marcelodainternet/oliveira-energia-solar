@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
 use App\Models\Configuracao;
 use App\Models\Postagem;
 use App\Models\Secao;
@@ -11,7 +10,6 @@ use App\Models\usuario;
 use App\Models\Lead;
 use App\Models\Categoria;
 use App\Models\Subcategoria;
-use Str;
 
 class AdminController extends Controller
 {
@@ -107,6 +105,21 @@ class AdminController extends Controller
         return view("admin.postagens", compact("secao", "postagem"));
     }
 
+    function inserirPostagem($secao, Request $request)
+    {
+        $postagem = Postagem::create([
+            "nome" => $request->nome ?? '',
+            "titulo" => $request->titulo ?? '',
+            "subtitulo" => $request->subtitulo ?? '',
+            "descricao" => $request->descricao ?? '',
+            "link" => $request->link ?? ''
+        ]);
+
+        salvar_imagem($request->imagem, "postagem-" . $postagem->id);
+
+        return back()->with('inserido', true);
+    }
+
     function atualizarPostagem($secao, $postagem, Request $request)
     {
         $postagem = Postagem::find($postagem);
@@ -136,6 +149,20 @@ class AdminController extends Controller
         return view("admin.projetos", compact("projetos", "projeto"));
     }
 
+    function inserirProjeto(Request $request)
+    {
+        $projeto = Categoria::create([
+            "nome" => $request->nome ?? '',
+            "titulo" => $request->titulo ?? '',
+            "subtitulo" => $request->subtitulo ?? '',
+            "descricao" => $request->descricao ?? ''
+        ]);
+
+        salvar_imagem($request->imagem, "projeto-" . $projeto->id);
+
+        return back()->with('atualizado', true);
+    }
+
     function atualizarProjeto($projeto, Request $request)
     {
         $projeto = Categoria::find($projeto);
@@ -152,12 +179,33 @@ class AdminController extends Controller
         return back()->with('saved', true);
     }
 
+    function excluirProjeto($projeto)
+    {
+        $projeto = Categoria::find($projeto);
+        $projeto->delete();
+        return back()->with('excluido', true);
+    }
+
     function fotos($projeto, $foto = null)
     {
         $projeto = Categoria::find($projeto);
         if ($foto) $foto = Subcategoria::find($foto);
 
         return view("admin.fotos", compact("projeto", "foto"));
+    }
+
+    function inserirFoto(Request $request)
+    {
+        $foto = Subcategoria::create([
+            "nome" => $request->nome ?? '',
+            "titulo" => $request->titulo ?? '',
+            "subtitulo" => $request->subtitulo ?? '',
+            "descricao" => $request->descricao ?? ''
+        ]);
+
+        salvar_imagem($request->imagem, "projeto-foto-" . $foto->id);
+
+        return back()->with('inserido', true);
     }
 
     function atualizarFoto($projeto, $foto, Request $request)
@@ -176,6 +224,13 @@ class AdminController extends Controller
         return back()->with('saved', true);
     }
 
+    function excluirFoto($foto)
+    {
+        $foto = Subcategoria::find($foto);
+        $foto->delete();
+        return back()->with('excluida', true);
+    }
+
     function leads()
     {
         $leads = Lead::orderBy("nome")->get();
@@ -183,10 +238,83 @@ class AdminController extends Controller
         return view("admin.leads", compact("leads"));
     }
 
+    function inserirLead()
+    {
+        Lead::create([]);
+    }
+
+    function atualizarLead($lead)
+    {
+        $lead = Lead::find($lead);
+        $lead->update([]);
+
+        return back()->with("atualizado", true);
+    }
+
+    function excluirLead($lead)
+    {
+        Lead::find($lead)->delete();
+
+        return back()->with("excluido", true);
+    }
+
     function usuarios($acao = null)
     {
         $usuarios = Usuario::orderBy('id', 'desc')->get();
 
         return view("admin.usuarios", compact("usuarios", "acao"));
+    }
+
+    function inserirUsuario(Request $request)
+    {
+        $request->validate([
+            'nome' => ['required'],
+            'usuario' => ['required'],
+            'email' => ['required'],
+            'senha' => ['required'],
+            'confirmar_senha' => ['required']
+        ]);
+
+        if ($request->senha != $request->confirmar_senha) return back()->withErrors(['confirmar_senha' => 'Senhas não conferem.'])->onlyInput('confirmar_senha');
+
+        Usuario::create([
+            'nome' => $request->nome,
+            'usuario' => $request->usuario,
+            'telefone' => $request->telefone,
+            'email' => $request->email,
+            'senha' => $request->senha
+        ]);
+
+        return back()->with("inserido", true);
+    }
+
+    function atualizarUsuario($usuario, Request $request)
+    {
+        $request->validate([
+            'nome' => ['required'],
+            'usuario' => ['required'],
+            'email' => ['required'],
+            'senha' => ['required'],
+            'confirmar_senha' => ['required']
+        ]);
+
+        if ($request->senha != $request->confirmar_senha) return back()->withErrors(['confirmar_senha' => 'Senhas não conferem.'])->onlyInput('confirmar_senha');
+
+        Usuario::find($usuario)->update([
+            'nome' => $request->nome,
+            'usuario' => $request->usuario,
+            'telefone' => $request->telefone,
+            'email' => $request->email,
+            'senha' => $request->senha
+        ]);
+
+        return back()->with("atualizado", true);
+    }
+
+    function excluirUsuario($usuario)
+    {
+        Usuario::find($usuario)->delete();
+
+        return back()->with("excluido", true);
     }
 }
