@@ -14,36 +14,20 @@ class Usuario extends Authenticatable
 
     public $timestamps = false;
     protected $table = "usuarios";
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'nome',
         'usuario',
+        'telefone',
         'email',
         'senha',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'senha'
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'data_cadastro' => 'datetime',
-        'data_ultimo_acesso' => 'datetime',
-        'senha' => 'hashed',
+        'data_ultimo_acesso' => 'datetime'
     ];
 }
