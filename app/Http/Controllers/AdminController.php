@@ -108,11 +108,29 @@ class AdminController extends Controller
     function inserirPostagem($secao, Request $request)
     {
         $postagem = Postagem::create([
+            "inativo" => $request->inativo ? true : false,
+            "destaque" => 0,
+            "etiqueta_id" => 0,
+            "categoria_id" => 0,
+            "subcategoria_id" => 0,
+            "imagem" => '',
+            "detalhe" => '',
+            "fonte" => '',
+            "alinhamento" => '',
+            "borda" => 0,
+            "arredondado" => 0,
+            "container" => 0,
+            "sombra" => 0,
+            "background" => '',
+            "opiniao" => '',
+            "views" => 0,
             "nome" => $request->nome ?? '',
             "titulo" => $request->titulo ?? '',
             "subtitulo" => $request->subtitulo ?? '',
             "descricao" => $request->descricao ?? '',
-            "link" => $request->link ?? ''
+            "link" => $request->link ?? '',
+            "secao_id" => $request->secao,
+            "data_expira" => date("Y-m-d")
         ]);
 
         salvar_imagem($request->imagem, "postagem-" . $postagem->id);
@@ -127,6 +145,7 @@ class AdminController extends Controller
         salvar_imagem($request->imagem, "postagem-" . $postagem->id);
 
         $postagem->update([
+            "inativo" => $request->inativo ? true : false,
             "nome" => $request->nome ?? '',
             "titulo" => $request->titulo ?? '',
             "subtitulo" => $request->subtitulo ?? '',
@@ -137,8 +156,10 @@ class AdminController extends Controller
         return back()->with('saved', true);
     }
 
-    function excluirPostagem()
+    function excluirPostagem($secao, $postagem)
     {
+        Postagem::find($postagem)->delete();
+        return redirect()->route('postagens', ['secao' => $secao])->with('excluida', true);
     }
 
     function projetos($projeto = null)
@@ -181,8 +202,7 @@ class AdminController extends Controller
 
     function excluirProjeto($projeto)
     {
-        $projeto = Categoria::find($projeto);
-        $projeto->delete();
+        Categoria::find($projeto)->delete();
         return back()->with('excluido', true);
     }
 

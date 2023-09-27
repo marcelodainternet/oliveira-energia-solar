@@ -12,7 +12,7 @@ class Postagem extends Model
     public $timestamps = false;
     protected $table = "postagens";
     protected $fillable = [
-        "nome", "titulo", "subtitulo", "descricao", "link"
+        "nome", "titulo", "subtitulo", "descricao", "link", "data_expira", "inativo", "destaque", "imagem", "detalhe", "fonte", "container", "borda", "arredondado", "sombra", "background", "opiniao", "views", "alinhamento", "etiqueta_id", "secao_id", "categoria_id", "subcategoria_id"
     ];
 
     public function secao()
