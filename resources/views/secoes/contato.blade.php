@@ -61,7 +61,7 @@
             <div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="200">
                 <div id="mail">
                 @if(session()->has('email-enviado'))
-                    <div id="mail-enviado" class="alert alert-seccess">E-mail enviado com sucesso!</div>
+                    <div id="mail-enviado" class="alert alert-success">E-mail enviado com sucesso!</div>
                     @endif
                     <form action="{{url('/contato')}}" method="post" role="form" class="php-email-form">
                         @csrf

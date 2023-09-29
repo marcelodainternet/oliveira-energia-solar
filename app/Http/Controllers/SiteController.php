@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 use App\Models\Secao;
 use App\Models\Configuracao;
 use App\Models\Categoria;
 use App\Models\Lead;
-use Exception;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContatoEmail;
+use App\Mail\ContatoRespostaEmail;
 
 class SiteController extends Controller
 {
@@ -99,7 +102,19 @@ class SiteController extends Controller
 
     function enviarContato(Request $request)
     {
-        //dd($request->all());
+        Mail::to('contato@oliveiraenergiasolar.com.br')->send(new ContatoEmail(
+            $request->nome,
+            $request->fone,
+            $request->email,
+            $request->assunto,
+            $request->mensagem
+        ));
+
+        Mail::to($request->email)->send(new ContatoRespostaEmail(
+            $request->nome,
+            $request->assunto
+        ));
+
         return redirect('/#mail')->with('email-enviado', true);
     }
 }
