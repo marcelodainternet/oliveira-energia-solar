@@ -89,11 +89,11 @@
                 <li> <a href="servicos.php"><i class="fa fa-code "></i>Servi?s</a> </li>
                 <li> <a href="parceiros.php"><i class="fa fa-code "></i>Parceiros</a> </li>
             -->
-                <li><a class="{{request()->is('adm/configuracoes')?'active':''}}" href="{{url('/adm/configuracoes')}}"><i class="fa fa-code "></i> Configura&ccedil;&otilde;es Gerais</a> </li>
-                <li><a class="{{request()->is('adm/secoes')?'active':''}}" href="{{url('/adm/secoes')}}"><i class="fa fa-folder "></i> Se&ccedil;&otilde;es</a> </li>
-                <li><a class="{{request()->is('adm/projetos')?'active':''}}" href="{{url('/adm/projetos')}}"><i class="fa fa-folder "></i> Projetos</a> </li>
-                <li><a class="{{request()->is('adm/leads')?'active':''}}" href="{{url('/adm/leads')}}"><i class="fa fa-folder "></i> E-mails Capitados</a> </li>
-                <li><a class="{{request()->is('adm/usuarios')?'active':''}}" href="{{url('/adm/usuarios')}}"><i class="fa fa-users "></i> Usu&aacute;rios</a> </li>
+                <li><a class="{{request()->is('adm/configuracoes*')?'active':''}}" href="{{url('/adm/configuracoes')}}"><i class="fa fa-code "></i> Configura&ccedil;&otilde;es Gerais</a> </li>
+                <li><a class="{{request()->is('adm/secoes*')?'active':''}}" href="{{url('/adm/secoes')}}"><i class="fa fa-folder "></i> Se&ccedil;&otilde;es</a> </li>
+                <li><a class="{{request()->is('adm/projetos*')?'active':''}}" href="{{url('/adm/projetos')}}"><i class="fa fa-folder "></i> Projetos</a> </li>
+                <li><a class="{{request()->is('adm/leads*')?'active':''}}" href="{{url('/adm/leads')}}"><i class="fa fa-folder "></i> E-mails Capitados</a> </li>
+                <li><a class="{{request()->is('adm/usuarios*')?'active':''}}" href="{{url('/adm/usuarios')}}"><i class="fa fa-users "></i> Usu&aacute;rios</a> </li>
                 <li><a target="_blank" href="https://api.whatsapp.com/send?phone=5548999775791&text=Olá Marcelo, sou seu cliente de site, você pode me atender?"> <i class="fa fa-code "></i> <span>Suporte</span> </a> </li>
                 <li><a href="{{route('login')}}"><i class="fa fa-sign-out"></i> Sair</a> </li>
             </ul>
