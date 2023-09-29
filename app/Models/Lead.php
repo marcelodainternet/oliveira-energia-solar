@@ -11,4 +11,7 @@ class Lead extends Model
 
     public $timestamps = false;
     protected $table = "emails_cap";
+    protected $fillable = [
+        "nome", "empresa", "telefone", "email", "fonte", "observacao"
+    ];
 }

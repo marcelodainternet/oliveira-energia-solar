@@ -43,10 +43,10 @@ Route::group(["prefix" => "adm"], function () {
         Route::put('/projetos/{projeto}/fotos/{foto}', [AdminController::class, 'atualizarFoto'])->name("fotos.atualizar");
         Route::delete('/projetos/{projeto}/fotos/{foto}', [AdminController::class, 'excluirFoto'])->name("fotos.excluir");
 
-        Route::get('/leads', [AdminController::class, 'leads']);
-        Route::post('/leads', [AdminController::class, 'inserirLead']);
-        Route::put('/leads', [AdminController::class, 'atualizarLead']);
-        Route::delete('/leads', [AdminController::class, 'excluirLead']);
+        Route::get('/leads/{lead?}', [AdminController::class, 'leads'])->name("leads");
+        Route::post('/leads', [AdminController::class, 'inserirLead'])->name("leads.inserir");
+        Route::put('/leads/{lead}', [AdminController::class, 'atualizarLead'])->name("leads.atualizar");
+        Route::delete('/leads/{lead}', [AdminController::class, 'excluirLead'])->name("leads.excluir");
 
         Route::get('/usuarios', [AdminController::class, 'usuarios'])->name("usuarios");
         Route::post('/usuarios', [AdminController::class, 'inserirUsuario'])->name("usuarios.inserir");

@@ -251,22 +251,39 @@ class AdminController extends Controller
         return back()->with('excluida', true);
     }
 
-    function leads()
+    function leads($lead = null)
     {
         $leads = Lead::orderBy("nome")->get();
+        if ($lead) $lead = Lead::find($lead);
 
-        return view("admin.leads", compact("leads"));
+        return view("admin.leads", compact("leads", "lead"));
     }
 
-    function inserirLead()
+    function inserirLead(Request $request)
     {
-        Lead::create([]);
+        Lead::create([
+            "nome" => $request->nome ?? '',
+            "empresa" => $request->empresa ?? '',
+            "telefone" => $request->telefone ?? '',
+            "email" => $request->email ?? '',
+            "fonte" => $request->fonte ?? '',
+            "observacao" => $request->observacao ?? ''
+        ]);
+
+        return back()->with('inserido', true);
     }
 
-    function atualizarLead($lead)
+    function atualizarLead($lead, Request $request)
     {
         $lead = Lead::find($lead);
-        $lead->update([]);
+        $lead->update([
+            "nome" => $request->nome ?? '',
+            "empresa" => $request->empresa ?? '',
+            "telefone" => $request->telefone ?? '',
+            "email" => $request->email ?? '',
+            "fonte" => $request->fonte ?? '',
+            "observacao" => $request->observacao ?? ''
+        ]);
 
         return back()->with("atualizado", true);
     }
