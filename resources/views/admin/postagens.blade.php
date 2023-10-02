@@ -138,7 +138,7 @@
                   </td>
                   <td style="text-align:center; vertical-align:middle; width:0; white-space:nowrap;">
                     @if (file_exists(public_path('uploads/postagem-'.$postagem->id.'-thumbs.jpg')))
-                      <img width="100" class="img-thumbnail" src="{{asset('uploads/postagem-'.$postagem->id.'-thumbs.jpg')}}">
+                      <img width="100" class="img-thumbnail" src="{{asset('uploads/postagem-'.$postagem->id.'-thumbs.jpg').'?'.rand(1,10)}}">
                     @endif
                   </td>
                   <td style="text-align:left; vertical-align:middle;">
