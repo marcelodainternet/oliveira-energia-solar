@@ -12,7 +12,7 @@ class Categoria extends Model
 
     public $timestamps = false;
     protected $fillable = [
-        "nome", "titulo", "subtitulo", "descricao"
+        "nome", "titulo", "subtitulo", "descricao", "ordem", "inativo", "destaque", "secao_id", "imagem", "alinhamento", "container", "borda", "arredondado", "sombra", "background_color", "background_img", "parallax", "data_expira"
     ];
 
     public function subcategorias(): HasMany

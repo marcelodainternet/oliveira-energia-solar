@@ -176,7 +176,21 @@ class AdminController extends Controller
             "nome" => $request->nome ?? '',
             "titulo" => $request->titulo ?? '',
             "subtitulo" => $request->subtitulo ?? '',
-            "descricao" => $request->descricao ?? ''
+            "descricao" => $request->descricao ?? '',
+            "ordem" => 0,
+            "inativo" => 0,
+            "destaque" => 0,
+            "secao_id" => 11,
+            "imagem" => '',
+            "alinhamento" => '',
+            "container" => 0,
+            "borda" => 0,
+            "arredondado" => 0,
+            "sombra" => 0,
+            "background_color" => '',
+            "background_img" => '',
+            "parallax" => 0,
+            "data_expira" => date("Y-m-d")
         ]);
 
         salvar_imagem($request->imagem, "projeto-" . $projeto->id);
@@ -244,7 +258,7 @@ class AdminController extends Controller
         return back()->with('saved', true);
     }
 
-    function excluirFoto($foto)
+    function excluirFoto($projeto, $foto)
     {
         $foto = Subcategoria::find($foto);
         $foto->delete();
