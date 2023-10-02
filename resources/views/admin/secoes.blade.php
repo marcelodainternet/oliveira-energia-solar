@@ -1,25 +1,25 @@
 @extends("admin.layout")
-
 @section("head")
     <title>Seções - Admin</title>
     <script src="{{asset('assets/libs/tinymce/js/tinymce/tinymce.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/richtext-editor.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/js/upload-image.js')}}"></script>
 @endsection
-
 @section("content")
-<div class="row">
+  <div class="row">
     <div class="col-md-12">
       <h2 class="page-head-line"><a href="{{url('/adm')}}"><i class="ace-icon fa fa-home home-icon"></i></a> | SEÇÕES</h2>
       <h4 class="panel-default text-info">Veja e edite as SEÇÕES do site! </h4>
     </div>
   </div>
-  <br />
+  <br/>
   <div class="page-content">
     <div class="page-container">
       <div class="row">
         <div class="col-md-5 {{$secao?'visible':'hidden'}}">
-          <h3>Editar Seção</h3>
+          <div style="margin-bottom:20px;">
+            <h3 style="margin:0;">Editar Seção</h3>
+          </div>
           <form action="{{$secao?route('secoes.atualizar', $secao->id):''}}" method="post" enctype="multipart/form-data" name="form1" id="form1">
             @csrf
             @method('put')
@@ -56,13 +56,14 @@
                 <input type="hidden" id="editar" name="editar" class="btn btn-success btn-sm" value="<?php echo $_GET['editar'] ?? ''; ?>">
               </div>
             </div>
-        </form>
-
+          </form>
         </div>
         <!-- /col-md-5 -->
   
         <div class="{{$secao?'col-md-7':'col-md-12'}}">
-          <h3>Seções cadastradas</h3>
+          <div style="margin-bottom:20px;">
+            <h3 style="margin:0;">Seções cadastradas</h3>
+          </div>
           <div class="table-responsive">
             <table class="table table-hover table-striped table-responsive">
               <tr align="center">

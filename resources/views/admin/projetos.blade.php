@@ -17,7 +17,9 @@
         <div class="page-container">
             <div class="row">
                 <div class="col-md-5">
-                    <h3>{{$projeto?"Editar Projeto":"Cadastrar Projeto"}}</h3>
+                    <div style="margin-bottom:20px;">
+                        <h3 style="margin:0;">{{$projeto?"Editar Projeto":"Cadastrar Projeto"}}</h3>
+                    </div>
                     <form action="{{$projeto?route('projetos.atualizar', ['projeto' => $projeto->id]):''}}" method="post" enctype="multipart/form-data" name="form1" id="form1">
                         @csrf
                         @if($projeto)
@@ -79,7 +81,7 @@
         
                 <div class="col-md-7">
                     <div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:center;">
-                        <h3>Projetos cadastrados ({{$projetos->count()}})</h3>
+                        <h3 style="margin:0;">Projetos cadastrados ({{$projetos->count()}})</h3>
                         @if($projeto)
                             <a class="btn btn-sm btn-primary" href="{{route('projetos')}}">Adicionar</a>
                         @endif
