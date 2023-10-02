@@ -129,7 +129,7 @@ class AdminController extends Controller
             "subtitulo" => $request->subtitulo ?? '',
             "descricao" => $request->descricao ?? '',
             "link" => $request->link ?? '',
-            "secao_id" => $request->secao,
+            "secao_id" => $secao,
             "data_expira" => date("Y-m-d")
         ]);
 
@@ -228,13 +228,27 @@ class AdminController extends Controller
         return view("admin.fotos", compact("projeto", "foto"));
     }
 
-    function inserirFoto(Request $request)
+    function inserirFoto($projeto, Request $request)
     {
         $foto = Subcategoria::create([
             "nome" => $request->nome ?? '',
             "titulo" => $request->titulo ?? '',
             "subtitulo" => $request->subtitulo ?? '',
-            "descricao" => $request->descricao ?? ''
+            "descricao" => $request->descricao ?? '',
+            "ordem" => 0,
+            "inativo" => 0,
+            "destaque" => 0,
+            "imagem" => '',
+            "alinhamento" => '',
+            "container" => 0,
+            "borda" => 0,
+            "arredondado" => 0,
+            "sombra" => 0,
+            "background_color" => '',
+            "background_img" => '',
+            "parallax" => 0,
+            "data_expira" => date('Y-m-d'),
+            "categoria_id" => $projeto
         ]);
 
         salvar_imagem($request->imagem, "projeto-foto-" . $foto->id);
