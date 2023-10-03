@@ -1,5 +1,8 @@
 <?php
 
+var_dump("Gustavo Luigi");
+exit;
+
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
