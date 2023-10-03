@@ -65,10 +65,13 @@ class SiteController extends Controller
     function leadStore(Request $request)
     {
         try {
-            Lead::insert([
-                "nome" => $request->nome,
-                "telefone" => $request->telefone,
-                "email" => $request->email
+            Lead::create([
+                "nome" => $request->nome ?? '',
+                "empresa" => $request->empresa ?? '',
+                "telefone" => $request->telefone ?? '',
+                "email" => $request->email ?? '',
+                "fonte" => $request->fonte ?? '',
+                "observacao" => $request->observacao ?? ''
             ]);
 
             return response()->json(["lead_enviada" => true]);
