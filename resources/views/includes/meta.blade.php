@@ -1,25 +1,56 @@
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 
+<link rel="canonical" href="https://{{$configuracao['site']}}">
 <meta name="description" content="{{$configuracao['descricao']}}">
 <meta name="keywords" content="{{$configuracao['p_chaves']}}">
-<meta name="author" content="Marcelo Silveira (48) 99977-5791">
-<meta name="Reply-to" content="marcelodainternet@gmail.com">
 
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="{{$configuracao['cor']}}">
-
-<meta name="apple-mobile-web-app-title" content="With Manifest">
-<meta name="msapplication-TitleImage" content="{{asset('assets/img/favicon.png')}}">
-<meta name="msapplication-TitleColor" content="{{$configuracao['cor']}}">
-<meta name="theme-color" content="{{$configuracao['cor']}}">
-
-<!-- <link rel="manifest" href="manifest.json"> -->
-<link rel="canonical" href="https://{{$configuracao['site']}}">
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.png')}}">
+<meta name="theme-color" content="{{$configuracao['cor']}}">
+<meta name="msapplication-TitleColor" content="{{$configuracao['cor']}}">
+<meta name="msapplication-TitleImage" content="{{asset('assets/img/favicon.png')}}">
+<link rel="manifest" href="manifest.json">
+
+<!-- Marcação Apple -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="With Manifest">
+<meta name="apple-mobile-web-app-status-bar-style" content="{{$configuracao['cor']}}">
 <link rel="apple-touch-icon" sizes="152x152" href="{{asset('assets/img/favicon.png')}}">
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('img/favicon.png')}}">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('assets/img/favicon.png')}}">
+ 
+<!-- Marcações Schema.org para Google -->
+<meta itemprop="name" content="{{$configuracao['titulo']}}">
+<meta itemprop="description" content="{{$configuracao['descricao']}}">
+<meta itemprop="image" content="{{asset('assets/img/favicon.png')}}">
+
+<!-- Marcação Google para autor e publicador -->
+<meta name="author" content="Marcelo Silveira (48) 99977-5791">
+<link rel="author" href="https://plus.google.com/[Google+_Profile]/posts"/>
+<meta name="Reply-to" content="marcelodainternet@gmail.com">
+<meta name="generator" content="">
+<link rel="publisher" href="https://plus.google.com/[Google+_Page_Profile]"/>  
+  
+<!-- Marcações Open Graph / Facebook -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="{{$configuracao['titulo']}}" />
+<meta property="og:url" content="https://{{$configuracao['site']}}" />
+<meta property="og:title" content="{{$configuracao['titulo']}}" />
+<meta property="og:description" content="{{$configuracao['descricao']}}" />
+<meta property="og:image" content="{{asset('assets/img/favicon.png')}}" />
+<meta property="og:image:secure_url" content="{{asset('assets/img/favicon.png')}}" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="400" />
+<meta property="og:image:height" content="300" />
+<meta property="og:image:alt" content="{{$configuracao['titulo']}}" />  
+
+<!-- Marcações para Twitter Card -->
+<meta name="twitter:card" content="{{$configuracao['titulo']}}">
+<meta name="twitter:site" content="https://{{$configuracao['site']}}">
+<meta name="twitter:title" content="{{$configuracao['titulo']}}">
+<meta name="twitter:description" content="{{$configuracao['descricao']}}">
+<meta name="twitter:image" content="{{asset('assets/img/favicon.png')}}">
+<meta name="twitter:creator" content="@marcelodaintern">
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
