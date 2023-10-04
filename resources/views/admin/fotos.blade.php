@@ -121,13 +121,32 @@
                     <a class="btn btn-sm btn-primary" href="{{route('fotos', ['projeto' => $projeto->id, 'foto' => $foto->id])}}" onClick="return confirmLink(this, 'excluir este item?')">
                       Editar
                     </a>
-                    <form method="post" action="{{route('fotos.excluir', ['projeto' => $projeto->id, 'foto' => $foto->id])}}" style="display:inline-block;">
-                      @csrf
-                      @method("delete")
-                      <button type="submit" class="btn btn-sm btn-danger" onClick="return confirmLink(this, 'excluir este item?')">
-                        Excluir
-                      </button>
-                    </form>
+
+                    <button data-toggle="modal" data-target="#excluir-foto-{{$foto->id}}" class="btn btn-sm btn-danger with-tip delete" title="remover postagem" id="{{$foto->id}}">
+                      Excluir
+                    </button>
+                    <div class="modal fade" id="excluir-postagem-{{$foto->id}}" tabindex="-1" role="dialog" aria-labelledby="meuModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                              <h4 class="modal-title" id="meuModalLabel">Excluir Postagem</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>Deseja realmente excluir esta foto?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                <form method="post" action="{{route('fotos.excluir', ['projeto' => $projeto->id, 'foto' => $foto->id])}}" style="display:inline-block;">
+                                  @csrf
+                                  @method("delete")
+                                  <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
+                                </form>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+
                   </td>
                 </tr>
               @endforeach
