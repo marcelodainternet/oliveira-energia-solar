@@ -1,7 +1,3 @@
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-
 <link rel="canonical" href="https://{{$configuracao['site']}}">
 <meta name="description" content="{{$configuracao['descricao']}}">
 <meta name="keywords" content="{{$configuracao['p_chaves']}}">
@@ -10,7 +6,7 @@
 <meta name="theme-color" content="{{$configuracao['cor']}}">
 <meta name="msapplication-TitleColor" content="{{$configuracao['cor']}}">
 <meta name="msapplication-TitleImage" content="{{asset('assets/img/favicon.png')}}">
-<link rel="manifest" href="manifest.json">
+<link rel="manifest" href="{{asset('manifest.json')}}">
 
 <!-- Marcação Apple -->
 <meta name="apple-mobile-web-app-capable" content="yes">

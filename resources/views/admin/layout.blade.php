@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @yield("head")
     <meta name="author" content="Marcelo Silveira (48) 99977-5791">
     <meta name="Reply-to" content="marcelodainternet@gmail.com">
     <meta name="theme-color" content="#1f2627">
@@ -16,9 +17,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/basic.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans">
-    <link rel="manifest" href="{{asset('assets/adm/manifest.json')}}">
+    <link rel="manifest" href="{{asset('adm/manifest.json')}}">
 
-    @yield("head")
 </head>
 
 <body>
