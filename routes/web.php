@@ -19,8 +19,8 @@ Route::group(["prefix" => "adm"], function () {
     Route::group(['middleware' => ['guest']], function () {
         Route::get('/login', [AuthController::class, 'login'])->name('login');
         Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
-        Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     });
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::group(["middleware" => "auth"], function () {
         Route::get('/', [AdminController::class, 'index']);
