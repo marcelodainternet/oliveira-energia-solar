@@ -136,11 +136,32 @@
                                             Ver Fotos ({{$categoria->subcategorias->count()}})
                                         </a>
                                         <a class="btn btn-sm btn-primary" href="{{route('projetos', $categoria->id)}}">Editar</a>
-                                        <form method="post" action="{{route('projetos.excluir', $categoria->id)}}" style="display:inline-block;">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="btn btn-sm btn-danger">Excluir</button>
-                                        </form>
+
+                                        <button data-toggle="modal" data-target="#excluir-projeto-{{$categoria->id}}" class="btn btn-sm btn-danger with-tip delete" title="remover projeto" id="{{$categoria->id}}">
+                                            Excluir
+                                        </button>
+                                        <div class="modal fade" id="excluir-projeto-{{$categoria->id}}" tabindex="-1" role="dialog" aria-labelledby="meuModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                        <h4 class="modal-title" id="meuModalLabel">Excluir Postagem</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Deseja realmente excluir este projeto?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                        <form method="post" action="{{route('projetos.excluir', $categoria->id)}}" style="display:inline-block;">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button class="btn btn-sm btn-danger">Excluir</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </td>
                                 </tr>
                             @endforeach
