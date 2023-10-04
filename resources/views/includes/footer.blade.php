@@ -49,7 +49,7 @@
                 <div class="col-lg-2 col-md-6 footer-links">
                     <h4>Links Úteis</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="{{url('/#')}}">Home</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{url('/')}}">Home</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="{{url('/#home')}}">Energia Solar</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="{{url('/#portfolio')}}">Portfolio</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="{{url('/#empresa')}}">Quem Somos</a></li>
@@ -94,14 +94,14 @@
 
     <div class="container">
         <div class="copyright">
-            &copy; Copyright {{date('Y')}} <strong>Oliveira Energia Solar</strong>. Todos os direitos reservados.
+            &copy; Copyright {{date('Y')}} <strong>{{$configuracao['titulo']}}</strong>. Todos os direitos reservados.
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mybiz-free-business-bootstrap-theme/ -->
-            Desenvolvido por <a target="_blanc" href="https://api.whatsapp.com/send?phone=5548998327848&text=Olá Marcelo venho do site OLIVEIRA ENERGIA SOLAR, você pode me atender?" target="_blank">Marcelo Silveira</a>
+            Desenvolvido por <a target="_blanc" href="https://api.whatsapp.com/send?phone=5548998327848&text=Olá Marcelo venho do site {{$configuracao['titulo']}}, você pode me atender?" target="_blank">Marcelo Silveira</a>
         </div>
     </div>
 </footer>

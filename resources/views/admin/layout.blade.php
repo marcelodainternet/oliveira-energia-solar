@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/basic.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="manifest" href="{{asset('assets/adm/manifest.json')}}">
+
     @yield("head")
 </head>
 
@@ -26,9 +28,9 @@
             <div id="page-inner" style="margin:0; padding: 15px 30px;">
                 @yield("content")
             </div>
-            @include('admin.includes.footer')
         </div>
-    </div>
+             @include('admin.includes.footer')
+   </div>
 </body>
 
 </html>
