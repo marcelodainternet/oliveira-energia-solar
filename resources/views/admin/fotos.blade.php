@@ -122,15 +122,15 @@
                       Editar
                     </a>
 
-                    <button data-toggle="modal" data-target="#excluir-foto-{{$foto->id}}" class="btn btn-sm btn-danger with-tip delete" title="remover postagem" id="{{$foto->id}}">
+                    <button data-toggle="modal" data-target="#excluir-foto-{{$foto->id}}" class="btn btn-sm btn-danger with-tip delete" title="remover foto" id="{{$foto->id}}">
                       Excluir
                     </button>
-                    <div class="modal fade" id="excluir-postagem-{{$foto->id}}" tabindex="-1" role="dialog" aria-labelledby="meuModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="excluir-foto-{{$foto->id}}" tabindex="-1" role="dialog" aria-labelledby="meuModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                              <h4 class="modal-title" id="meuModalLabel">Excluir Postagem</h4>
+                              <h4 class="modal-title" id="meuModalLabel">Excluir Foto</h4>
                             </div>
                             <div class="modal-body">
                               <p>Deseja realmente excluir esta foto?</p>
