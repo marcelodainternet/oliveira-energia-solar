@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/basic.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans">
-    <link rel="manifest" href="{{asset('adm/manifest.json')}}">
+    <link rel="manifest" href="{{asset('manifestadm/manifest.json')}}">
 
 </head>
 
