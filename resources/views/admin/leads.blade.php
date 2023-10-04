@@ -101,11 +101,32 @@
                   <td style="vertical-align:middle;">{{$lead->email}}</td>
                   <td style="width:0; white-space:nowrap;">
                     <a class="btn btn-sm btn-primary" href="{{route('leads', ['lead' => $lead->id])}}">Editar</a>
-                    <form method="post" action="{{route('leads.excluir', ['lead' => $lead->id])}}" style="display:inline-block;">
-                      @csrf
-                      @method('delete')
-                      <button type="submit" class="btn btn-sm btn-danger">Excluir</a>
-                    </form>
+
+                    <button data-toggle="modal" data-target="#excluir-lead-{{$lead->id}}" class="btn btn-sm btn-danger with-tip delete" title="remover lead" id="{{$lead->id}}">
+                      Excluir
+                    </button>
+                    <div class="modal fade" id="excluir-lead-{{$lead->id}}" tabindex="-1" role="dialog" aria-labelledby="meuModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                              <h4 class="modal-title" id="meuModalLabel">Excluir Lead</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>Deseja realmente excluir este lead?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                <form method="post" action="{{route('leads.excluir', ['lead' => $lead->id])}}" style="display:inline-block;">
+                                  @csrf
+                                  @method('delete')
+                                  <button type="submit" class="btn btn-sm btn-danger">Excluir</a>
+                                </form>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  
                   </td>
                 </tr>
               @endforeach
