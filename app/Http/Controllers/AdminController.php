@@ -15,6 +15,8 @@ class AdminController extends Controller
 {
     function index()
     {
+        $k = "erro";
+        $k + 1;
         return view("admin.inicio");
     }
 
