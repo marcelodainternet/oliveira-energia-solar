@@ -64,6 +64,11 @@ class SiteController extends Controller
 
     function leadStore(Request $request)
     {
+        $timeNow = time();
+        $timeForm = $request->input('timestamp');
+
+        if (($timeNow - $timeForm) < 5) return response()->json(["lead_enviada" => false, "error" => "Suspeita de atividade de bot. Tente novamente."]);
+
         try {
             Lead::create([
                 "nome" => $request->nome ?? '',

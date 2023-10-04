@@ -73,6 +73,7 @@
                     <p>Deixe seu e-mail e receba nossas atualizações e novidades.</p>
                     <form method="post" id="form-newsletter" action="{{url('/lead')}}">
                         @csrf
+                        <input type="hidden" name="timestamp" value="{{time()}}">
                         <div class="form-group">
                             <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required>
                         </div>
