@@ -124,7 +124,7 @@
                                     
                                     <td style="width:0; white-space:nowrap;">
                                         @if(file_exists(public_path('uploads/projeto-'.$categoria->id.'-thumbs.jpg')))
-                                            <img width="100" class="img-thumbnail" src="{{asset('uploads/projeto-'.$categoria->id.'-thumbs.jpg').'?'.rand(1,10)}}">
+                                            <img width="100" class="img-thumbnail" src="{{asset('uploads/projeto-'.$categoria->id.'-thumbs.jpg').'?'.time()}}">
                                         @endif
                                     </td>
 

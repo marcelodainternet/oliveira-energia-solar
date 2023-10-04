@@ -1,6 +1,6 @@
 <div class="carregamento-de-imagem" data-fallback="{{$fallback}}" style="position: relative; display:inline-block;">
     <label for="f{{$name}}">
-      <img class="img-thumbnail" style="width: 225px; height: 150px; object-fit:contain;" src="{{isset($path) && file_exists(public_path($path))?asset($path)."?".rand(1,10):$fallback}}" alt="Imagem Principal" title="Imagem Principal">
+      <img class="img-thumbnail" style="width: 225px; height: 150px; object-fit:contain;" src="{{isset($path) && file_exists(public_path($path))?asset($path)."?".time():$fallback}}" alt="Imagem Principal" title="Imagem Principal">
     </label>
     <button type="button" style="display: {{isset($path) && file_exists(public_path($path))?'block':'none'}}; position: absolute; right: 1px; top: 1px; padding: 2px; background: #fff; border: 1px solid #ddd; border-width: 0 0 1px 1px; border-radius: 0 0 0 5px; line-height: 1;" class="text-danger botao-excluir">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">

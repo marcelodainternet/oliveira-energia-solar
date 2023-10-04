@@ -102,7 +102,7 @@
                 <tr style="text-align:center;">
                   <td style="width:0; vertical-align:middle;">
                     @if (file_exists(public_path('uploads/secao-'.$secao->id.'.jpg')))
-                      <img style="width: 75px; height: 50px; object-fit: cover; max-width: none;" class="img-thumbnail" src="{{asset('uploads/secao-'.$secao->id.'-thumbs.jpg').'?'.rand(1,10)}}">
+                      <img style="width: 75px; height: 50px; object-fit: cover; max-width: none;" class="img-thumbnail" src="{{asset('uploads/secao-'.$secao->id.'-thumbs.jpg').'?'.time()}}">
                     @endif
                   </td>
                   <td style="vertical-align:middle; text-align:left;">{{$secao->nome}}</td>
