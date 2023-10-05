@@ -110,6 +110,11 @@ class SiteController extends Controller
 
     function enviarContato(Request $request)
     {
+        $timeNow = time();
+        $timeForm = $request->input('timestamp');
+
+        if (($timeNow - $timeForm) < 5) return redirect('/#mail')->with('email-enviado', false);
+
         Mail::to('contato@oliveiraenergiasolar.com.br')->send(new ContatoEmail(
             $request->nome,
             $request->fone,

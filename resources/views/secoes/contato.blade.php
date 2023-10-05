@@ -65,6 +65,7 @@
                     @endif
                     <form action="{{url('/contato')}}" method="post" role="form" class="php-email-form">
                         @csrf
+                        <input type="hidden" name="timestamp" value="{{time()}}">
                         <div class="form-row">
                         <div class="col-md-5 form-group">
                         <label>Nome:</label>
