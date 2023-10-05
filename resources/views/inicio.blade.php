@@ -1,5 +1,6 @@
 @extends("layout")
 @section("titulo")
+
 <title>{{$configuracao['titulo']}}</title>
 @endsection
 @section("head")
