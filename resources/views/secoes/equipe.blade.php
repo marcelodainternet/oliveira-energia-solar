@@ -1,4 +1,4 @@
-<section id="equipe" class="equipe" style="margin-top:-110px;">
+<section id="equipe" class="equipe" style="margin-top:-110px; padding-bottom:100px;">
     <div class="container">
         <div class="section-title">
             <span>{{$equipe->titulo}}</span>
