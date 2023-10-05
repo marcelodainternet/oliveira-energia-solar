@@ -29,8 +29,16 @@ function salvar_imagem(mixed $imagemCarregada, string $nome = null)
         $imagem = arruma_imagem($imagemCarregada, 1600);
         $imagem->save(public_path("uploads/" . $nome . "-grande.jpg"), 80);
     } elseif ($imagemCarregada === null) {
-        if (file_exists(public_path('uploads/' . $nome . '.jpg'))) unlink(public_path('uploads/' . $nome . '.jpg'));
-        if (file_exists(public_path('uploads/' . $nome . '-thumbs.jpg'))) unlink(public_path('uploads/' . $nome . '-thumbs.jpg'));
-        if (file_exists(public_path('uploads/' . $nome . '-grande.jpg'))) unlink(public_path('uploads/' . $nome . '-grande.jpg'));
+        $file_path = public_path('uploads/' . $nome . '.jpg');
+        if (file_exists($file_path) && is_writable($file_path)) unlink($file_path);
+        elseif (file_exists($file_path)) error_log("Sem permissão para excluir: $file_path");
+
+        $file_path = public_path('uploads/' . $nome . '-thumbs.jpg');
+        if (file_exists($file_path) && is_writable($file_path)) unlink($file_path);
+        elseif (file_exists($file_path)) error_log("Sem permissão para excluir: $file_path");
+
+        $file_path = public_path('uploads/' . $nome . '-grande.jpg');
+        if (file_exists($file_path) && is_writable($file_path)) unlink($file_path);
+        elseif (file_exists($file_path)) error_log("Sem permissão para excluir: $file_path");
     }
 }
