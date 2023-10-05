@@ -65,7 +65,7 @@ class SiteController extends Controller
     function leadStore(Request $request)
     {
         $timeNow = time();
-        $timeForm = $request->input('timestamp');
+        $timeForm = $request->timestamp;
 
         if (($timeNow - $timeForm) < 5) return response()->json(["lead_enviada" => false, "error" => "Suspeita de atividade de bot. Tente novamente."]);
 
@@ -111,9 +111,9 @@ class SiteController extends Controller
     function enviarContato(Request $request)
     {
         $timeNow = time();
-        $timeForm = $request->input('timestamp');
+        $timeForm = $request->timestamp;
 
-        if (($timeNow - $timeForm) < 5) return redirect('/#mail')->with('email-enviado', false);
+        if (($timeNow - $timeForm) < 5) return response()->json(["email_enviado" => false, "error" => "Suspeita de atividade de bot. Tente novamente."]);
 
         Mail::to('contato@oliveiraenergiasolar.com.br')->send(new ContatoEmail(
             $request->nome,
@@ -128,6 +128,6 @@ class SiteController extends Controller
             $request->assunto
         ));
 
-        return redirect('/#mail')->with('email-enviado', true);
+        return response()->json(["email_enviado" => true]);
     }
 }

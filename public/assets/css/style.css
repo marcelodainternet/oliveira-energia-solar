@@ -1279,8 +1279,8 @@ section {
   background: #fff;
 }
 
-.contact .php-email-form .form-group {
-  padding-bottom: 8px;
+.contact .form-group {
+  margin-top: .75rem;
 }
 
 .contact .php-email-form .error-message {
