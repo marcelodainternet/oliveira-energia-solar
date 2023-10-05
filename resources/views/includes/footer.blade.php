@@ -119,7 +119,7 @@
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': formNewsletter._token.value
                 },
-                body: JSON.stringify({nome: formNewsletter.nome.value, telefone: formNewsletter.telefone.value, email: formNewsletter.email.value})
+                body: JSON.stringify({timestamp: formNewsletter.timestamp.value, nome: formNewsletter.nome.value, telefone: formNewsletter.telefone.value, email: formNewsletter.email.value})
             })
             .then(response => response.text())
             .then(response => JSON.parse(response))
