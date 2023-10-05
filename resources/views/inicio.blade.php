@@ -74,18 +74,42 @@
 @endsection
 @section("content")    
     <main id="main">
-        @include('secoes.vitrine')
-        @include('secoes.home')
-        @include('secoes.vitrine2')
-        @include('secoes.destaque')
-        @include('secoes.vitrine3')
-        @include('secoes.parceiros')
-        @include('secoes.portfolio')
-        @include('secoes.depoimentos')
-        @include('secoes.empresa')
-        @include('secoes.equipe')
-        @include('secoes.contato')
-        @include('secoes.redes_sociais')
+        @if($vitrine && !$vitrine->inativo)
+            @include('secoes.vitrine')
+        @endif
+        @if($principal && !$principal->inativo)
+            @include('secoes.home')
+        @endif
+        @if($vitrine2 && !$vitrine2->inativo)
+            @include('secoes.vitrine2')
+        @endif
+        @if($destaque && !$destaque->inativo)
+            @include('secoes.destaque')
+        @endif
+        @if($vitrine3 && !$vitrine3->inativo)
+            @include('secoes.vitrine3')
+        @endif
+        @if($parceiros && !$parceiros->inativo)
+            @include('secoes.parceiros')
+        @endif
+        @if($portfolio && !$portfolio->inativo)
+            @include('secoes.portfolio')
+        @endif
+        @if($depoimentos && !$depoimentos->inativo)
+            @include('secoes.depoimentos')
+        @endif
+        @if($empresa && !$empresa->inativo)
+            @include('secoes.empresa')
+        @endif
+        @if($equipe && !$equipe->inativo)
+            @include('secoes.equipe')
+        @endif
+        @if($contato && !$contato->inativo)
+            @include('secoes.contato')
+        @endif
+        @if($redes_sociais && !$redes_sociais->inativo)
+            @include('secoes.redes_sociais')
+        @endif
     </main>
     <div id="preloader" style="background:{{$configuracao['cor']}};"></div>
 @endsection
