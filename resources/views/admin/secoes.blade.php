@@ -33,25 +33,25 @@
               <div class="form-group col-md-12 disabled">
                 <fieldset disabled>
                   <label>Seção*</label>
-                  <input required type="text" id="nome" name="nome" placeholder="Nome* (não aparece no site)" class=" form-control" value="<?php echo $secao->nome ?? ''; ?>">
+                  <input required type="text" id="nome" name="nome" placeholder="Nome* (não aparece no site)" class=" form-control" value="{{$secao->nome ?? ''}}">
                 </fieldset>
               </div>
               <div class="form-group col-md-12">
                 <label>Titulo</label>
-                <input type="text" id="titulo" name="titulo" placeholder="Título" class="form-control" value="<?php echo $secao->titulo ?? ''; ?>">
+                <input type="text" id="titulo" name="titulo" placeholder="Título" class="form-control" value="{{$secao->titulo ?? ''}}">
               </div>
               <div class="form-group col-md-12">
                 <label>Subtitulo</label>
-                <input type="text" id="subtitulo" name="subtitulo" placeholder="Subtítulo" class="form-control" value="<?php echo $secao->subtitulo ?? ''; ?>">
+                <input type="text" id="subtitulo" name="subtitulo" placeholder="Subtítulo" class="form-control" value="{{$secao->subtitulo ?? ''}}">
               </div>
               <div class="form-group col-md-12">
                 <label>Descrição</label>
-                <textarea id="descricao" name="descricao" rows="15" class="form-control"><?php echo $secao->descricao ?? ''; ?></textarea>
+                <textarea id="descricao" name="descricao" rows="15" class="form-control">{{$secao->descricao ?? ''}}</textarea>
               </div>
               <div class="form-group col-md-12">
                 <label class="control-label" for="filebutton"></label>
                 <input type="submit" id="enviar" name="enviar" class="btn btn-primary btn-block" value="SALVAR">
-                <input type="hidden" id="editar" name="editar" class="btn btn-success btn-sm" value="<?php echo $_GET['editar'] ?? ''; ?>">
+                <input type="hidden" id="editar" name="editar" class="btn btn-success btn-sm" value="{{$_GET['editar'] ?? ''}}">
               </div>
             </div>
           </form>
