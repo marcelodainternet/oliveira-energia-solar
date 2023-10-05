@@ -225,7 +225,7 @@
                 <!-- File Button Enviar -->
                 <div class="form-group col-md-12">
                   <label class="control-label" for="filebutton"></label>
-                  <input type="submit" id="editar" name="editar" class="btn btn-success btn-block" value="EDITAR CONFIGURAÇÃO">
+                  <input type="submit" id="editar" name="editar" class="btn btn-success btn-block" value="SALVAR">
                   <input type="hidden" id="editar" name="editar" class="btn btn-success btn-sm" value="<?php //echo $_GET['editar'] ?>">
                 </div>
               </div>

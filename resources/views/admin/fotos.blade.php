@@ -62,7 +62,7 @@
 
                 <!-- File Button Enviar -->
                 <div class="form-group col-md-12">
-                  <button type="submit" class="btn btn-primary btn-block">{{$foto?"Salvar":"Adicionar"}}</button>
+                  <button type="submit" class="btn btn-primary btn-block">{{$foto?"SALVAR":"CADASTRAR"}}</button>
                 </div>
             </fieldset>
           </form>
@@ -85,7 +85,7 @@
           @if($projeto->subcategorias->isNotEmpty())
             <table class="table table-hover table-striped table-responsive">
               <tr style="text-align:center;">
-                <td><strong><a>ID</a></strong></td>
+          <!--  <td><strong><a>ID</a></strong></td>  -->
                 <td><strong><a>Ativo</a></strong></td>
                 <td><strong><a>Imagem</a></strong></td>
                 <td><strong><a>Projeto</a></strong></td>
@@ -94,8 +94,7 @@
               </tr>
               @foreach($projeto->subcategorias as $foto)
                 <tr style="text-align:center;">
-                  <td style="width:0; white-space:nowrap;">{{$foto->id}}</td>
-
+        <!--      <td style="width:0; white-space:nowrap;">{{$foto->id}}</td>  -->
                   <td style="width:0; white-space:nowrap;">
                     @if ($foto->inativo == 1)
                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#a94442" class="bi bi-toggle-on" viewBox="0 0 16 16">

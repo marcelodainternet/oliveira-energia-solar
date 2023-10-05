@@ -71,7 +71,7 @@
                                 <!-- File Button Enviar -->
                                 <div class="form-group col-md-12">
                                     <label class="control-label" for="filebutton"></label>
-                                    <input type="submit" id="enviar" name="enviar" class="btn btn-success btn-block" value="Cadastrar">
+                                    <button type="submit" class="btn btn-primary btn-block">{{$projeto?"SALVAR":"CADASTRAR"}}</button>
                                     <input type="hidden" id="editar" name="editar" class="btn btn-success btn-sm" value="<?php //echo $_GET['editar'] ?>">
                                 </div>
                             </div>
@@ -132,7 +132,7 @@
                                     <td style="text-align:left; vertical-align:middle;">{{$categoria->titulo}}</td>
 
                                     <td style="width:0; white-space:nowrap; vertical-align:middle;">
-                                        <a class="btn btn-sm btn-primary" href="{{route('fotos', ['projeto' => $categoria->id])}}">
+                                        <a class="btn btn-sm btn-success" href="{{route('fotos', ['projeto' => $categoria->id])}}">
                                             Ver Fotos ({{$categoria->subcategorias->count()}})
                                         </a>
                                         <a class="btn btn-sm btn-primary" href="{{route('projetos', $categoria->id)}}">Editar</a>

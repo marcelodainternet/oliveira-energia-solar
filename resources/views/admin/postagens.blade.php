@@ -17,9 +17,7 @@
     <div class="page-container">
       <div class="row">
         <div class="col-md-5">
-          <div style="margin-bottom:20px;">
-            <h3 style="margin:0;">{{$postagem?"Editar Postagem":"Cadastrar Postagem"}}</h3>
-          </div>
+            <h3 style="margin-bottom:10px; margin-top:0px;">{{$postagem?"Editar Postagem":"Cadastrar Postagem"}}</h3>
           <form action="{{$postagem?route('postagens.atualizar', ['secao' => $secao->id, 'postagem' => $postagem->id]):route('postagens.inserir', ['secao' => $secao->id])}}" method="post" enctype="multipart/form-data" name="form1" id="form1">
             @csrf
             @if($postagem)
@@ -39,15 +37,27 @@
                   @endif
                 </div>
 
+                <!-- Text input Inativo 
                 <div style="text-align:left;" class="form-group col-md-12">
                   <label class="control-label" for="inativo">Inativo:</label>
                   <label class="checkbox-inline" for="inativo-0">
                     <input type="checkbox" id="inativo-0"  name="inativo" value="1" {{$postagem && $postagem->inativo?"checked=checked":""}}>SIM
                   </label>
-                </div>
+                </div>  -->
 
-                <!-- Text input Nome  -->
+            <!-- Select Secao 
+            <div class="form-group col-md-12">
+              <label>Escolha a SEÇÃO da postagem*</label>
+
+              <select required name="secao" id="secao" class="form-control">
+                <option>
+                <option value="" selected="selected"></option>
+              </select> -->
+
+                <!-- Text input Postagem  -->
                 <div class="form-group col-md-12">
+              <div class="alert-danger">Só deve existir UMA postagem em VITRINES 2 e 3.</div>
+              <div class="alert-success" style="margin-bottom: 10px;">Para as demais seções as postagens são ILIMITADAS</div>
                   <label>Postagem*</label>
                   <input required type="text" id="nome" name="nome" placeholder="Nome*" class="form-control" value="{{$postagem->nome??''}}">
                 </div>
@@ -78,7 +88,7 @@
 
                 <!-- File Button Enviar -->
                 <div class="form-group col-md-12">
-                  <button type="submit" class="btn btn-primary btn-block">{{$postagem?"Salvar":"Adicionar"}}</button>
+                  <button type="submit" class="btn btn-primary btn-block">{{$postagem?"SALVAR":"CADASTRAR"}}</button>
                 </div>
               </div>
             </fieldset>
@@ -103,24 +113,23 @@
             <table class="table table-responsive table-hover table-striped table-responsive">
               <tr style="text-align:center;">
                 <td>
-                  <strong><a href="">ID</a></strong>
+                  <a href=""><b>ID</b></a>
                 </td>
                 <td>
-                  <strong><a href="">Ativo</a></strong>
+                  <a href=""><b>Ativo</b></a>
                 </td>
                 <td>
-                  <strong><a href="">Imagem</a></strong>
+                  <a href=""><b>Imagem</b></a>
                 </td>
                 <td style="text-align:left;">
-                  <strong><a href="">Postagem</a></strong>
+                  <a href=""><b>Postagem</b></a>
                 </td>
                 <td style="text-align:left;">
-                  <strong><a href="">Título</a></strong>
+                  <a href=""><b>Título</b></a>
                 </td>
                 <td style="text-align:left;">
-                  <strong><a href="">Subtítulo</a></strong>
+                  <a href=""><b>Editar/Excluir</b></a>
                 </td>
-                <td></td>
               </tr>
               @foreach($secao->postagens as $postagem)
                 <tr>
@@ -149,13 +158,6 @@
                       {{$postagem->titulo}}
                     @else
                       <i class="text-muted">Sem título</i>
-                    @endif
-                  </td>
-                  <td style="text-align:left; vertical-align:middle;">
-                    @if($postagem->subtitulo)
-                      {{$postagem->subtitulo}}
-                    @else
-                      <i class="text-muted">Sem subtítulo</i>
                     @endif
                   </td>
                   <td style="width:0; white-space:nowrap; vertical-align:middle;">
