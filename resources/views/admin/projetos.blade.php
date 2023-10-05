@@ -111,15 +111,10 @@
                             @foreach($projetos as $categoria)
                                 <tr style="text-align:center;">
                                     <td style="width:0; white-space:nowrap; vertical-align:middle;">
-                                        @if ($categoria->inativo == 1)
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#a94442" class="bi bi-toggle-on" viewBox="0 0 16 16">
-                                                <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
-                                            </svg>
-                                        @else
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#3c763d" class="bi bi-toggle-on" viewBox="0 0 16 16">
-                                                <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
-                                            </svg>
-                                        @endif
+                                        <label class="switch">
+                                            <input type="checkbox" class="check-inativo" {{$categoria->inativo?:"checked"}} a-action="{{route('projetos.atualizar.status', ['projeto' => $categoria->id])}}" a-token="{{csrf_token()}}">
+                                            <span class="slider"></span>
+                                        </label>
                                     </td>
                                     
                                     <td style="width:0; white-space:nowrap;">
@@ -175,4 +170,27 @@
             </div>
         </div>
     </div>
+    <script>
+        document.querySelectorAll(".check-inativo").forEach(checkInativo => checkInativo.addEventListener("change", () => {
+          let action = checkInativo.getAttribute("a-action");
+          let token = checkInativo.getAttribute("a-token");
+    
+          fetch(action, {
+            method: "put",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': token
+            },
+            body: JSON.stringify({ativo: checkInativo.checked})
+          })
+          .then(response => response.text())
+          .then(response => JSON.parse(response))
+          .then(response => {
+            if(!response.atualizado) checkInativo.checked = !checkInativo.checked;
+          })
+          .catch(error => {
+            checkInativo.checked = !checkInativo.checked;
+          });
+        }));
+    </script>
 @endsection

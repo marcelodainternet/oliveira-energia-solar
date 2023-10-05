@@ -76,7 +76,7 @@ class AdminController extends Controller
 
     function secoes($secao = null)
     {
-        $secoes = Secao::where("inativo", 0)->get();
+        $secoes = Secao::get();
         if ($secao) $secao = Secao::find($secao);
 
         return view("admin.secoes", compact("secoes", "secao"));
@@ -95,6 +95,14 @@ class AdminController extends Controller
         ]);
 
         return back()->with('saved', true);
+    }
+
+    function atualizarSecaoStatus($secao, Request $request)
+    {
+        $inativo = $request->ativo ? false : true;
+        $atualizado = Secao::find($secao)->update(["inativo" => $inativo]);
+
+        return response()->json(["atualizado" => $atualizado]);
     }
 
     function postagens($secao, $postagem = null)
@@ -156,6 +164,14 @@ class AdminController extends Controller
         return back()->with('saved', true);
     }
 
+    function atualizarPostagemStatus($secao, $postagem, Request $request)
+    {
+        $inativo = $request->ativo ? false : true;
+        $atualizado = Postagem::find($postagem)->update(["inativo" => $inativo]);
+
+        return response()->json(["atualizado" => $atualizado]);
+    }
+
     function excluirPostagem($secao, $postagem)
     {
         Postagem::find($postagem)->delete();
@@ -214,6 +230,14 @@ class AdminController extends Controller
         return back()->with('saved', true);
     }
 
+    function atualizarProjetoStatus($projeto, Request $request)
+    {
+        $inativo = $request->ativo ? false : true;
+        $atualizado = Categoria::find($projeto)->update(["inativo" => $inativo]);
+
+        return response()->json(["atualizado" => $atualizado]);
+    }
+
     function excluirProjeto($projeto)
     {
         Categoria::find($projeto)->delete();
@@ -270,6 +294,14 @@ class AdminController extends Controller
         ]);
 
         return back()->with('saved', true);
+    }
+
+    function atualizarFotoStatus($projeto, $foto, Request $request)
+    {
+        $inativo = $request->ativo ? false : true;
+        $atualizado = Subcategoria::find($foto)->update(["inativo" => $inativo]);
+
+        return response()->json(["atualizado" => $atualizado]);
     }
 
     function excluirFoto($projeto, $foto)

@@ -13,7 +13,7 @@ class Secao extends Model
     public $timestamps = false;
     protected $table = "secoes";
     protected $fillable = [
-        "titulo", "subtitulo", "descricao"
+        "titulo", "subtitulo", "descricao", "inativo"
     ];
 
     public function postagens(): HasMany

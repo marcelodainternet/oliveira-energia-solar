@@ -62,14 +62,14 @@
           <div style="margin-bottom:20px;">
             <h3 style="margin:0;">Seções cadastradas</h3>
           </div>
-          <div class="table-responsive">
+          <div class="table-responsive">            
             <table class="table table-hover table-striped table-responsive">
-              <tr align="center">
-                <td align="left"><a href=""><b>Imagem</b></a></td>  
-                <td align="left"><a href=""><b>Ativo</b></a></td>
-                <td align="center"><a href=""><b>Editar Seção/Postagens</b></a></td>       
-                <td align="left"><a href=""><b>Seção</b></a></td>
-                <td align="left"><a href=""><b>Titulo</b></a></td>
+              <tr style="text-align:center;">
+                <td style="text-align:left;"><a href=""><b>Imagem</b></a></td>  
+                <td style="text-align:left;"><a href=""><b>Ativo</b></a></td>
+                <td style="text-align:center;"><a href=""><b>Editar Seção/Postagens</b></a></td>       
+                <td style="text-align:left;"><a href=""><b>Seção</b></a></td>
+                <td style="text-align:left;"><a href=""><b>Titulo</b></a></td>
               </tr>
               @foreach($secoes as $secao)
                 <tr style="text-align:center;">
@@ -79,15 +79,10 @@
                     @endif
                   </td>      
                   <td style="text-align:center; vertical-align:middle; width:0; white-space:nowrap;">
-                    @if ($secao->inativo == 1)
-                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#a94442" class="bi bi-toggle-on" viewBox="0 0 16 16">
-                        <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
-                      </svg>
-                    @else
-                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#3c763d" class="bi bi-toggle-on" viewBox="0 0 16 16">
-                        <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
-                      </svg>
-                    @endif
+                    <label class="switch">
+                      <input type="checkbox" class="check-inativo" {{$secao->inativo?:"checked"}} a-action="{{route('secoes.atualizar.status', ['secao' => $secao->id])}}" a-token="{{csrf_token()}}">
+                      <span class="slider"></span>
+                    </label>
                   </td>
                   <td style="width:0; vertical-align:middle; white-space:nowrap;">
                     <a class="btn btn-sm btn-primary" href="{{route('secoes', $secao->id)}}">
@@ -107,4 +102,27 @@
       </div>
     </div>
   </div>
+  <script>
+    document.querySelectorAll(".check-inativo").forEach(checkInativo => checkInativo.addEventListener("change", () => {
+      let action = checkInativo.getAttribute("a-action");
+      let token = checkInativo.getAttribute("a-token");
+
+      fetch(action, {
+        method: "put",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': token
+        },
+        body: JSON.stringify({ativo: checkInativo.checked})
+      })
+      .then(response => response.text())
+      .then(response => JSON.parse(response))
+      .then(response => {
+        if(!response.atualizado) checkInativo.checked = !checkInativo.checked;
+      })
+      .catch(error => {
+        checkInativo.checked = !checkInativo.checked;
+      });
+    }));
+  </script>
 @endsection
