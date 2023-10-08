@@ -1,24 +1,12 @@
+<!-- Basico -->
 <link rel="canonical" href="https://{{$configuracao['site']}}">
 <meta name="description" content="{{$configuracao['descricao']}}">
 <meta name="keywords" content="{{$configuracao['p_chaves']}}">
-
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.png')}}">
 <meta name="theme-color" content="{{$configuracao['cor']}}">
 <meta name="msapplication-TitleColor" content="{{$configuracao['cor']}}">
 <meta name="msapplication-TitleImage" content="{{asset('assets/img/favicon.png')}}">
 <link rel="manifest" href="{{asset('manifest.json')}}">
-
-<!-- Marcação Apple -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="With Manifest">
-<meta name="apple-mobile-web-app-status-bar-style" content="{{$configuracao['cor']}}">
-<link rel="apple-touch-icon" sizes="152x152" href="{{asset('assets/img/favicon.png')}}">
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('assets/img/favicon.png')}}">
- 
-<!-- Marcações Schema.org para Google -->
-<meta itemprop="name" content="{{$configuracao['titulo']}}">
-<meta itemprop="description" content="{{$configuracao['descricao']}}">
-<meta itemprop="image" content="{{asset('assets/img/favicon.png')}}">
 
 <!-- Marcação Google para autor e publicador -->
 <meta name="author" content="Marcelo Silveira (48) 99977-5791">
@@ -27,6 +15,26 @@
 <meta name="generator" content="">
 <link rel="publisher" href="https://plus.google.com/[Google+_Page_Profile]"/>  
   
+<!-- Marcações Schema.org para Google -->
+<meta itemprop="name" content="{{$configuracao['titulo']}}">
+<meta itemprop="description" content="{{$configuracao['descricao']}}">
+<meta itemprop="image" content="{{asset('assets/img/favicon.png')}}">
+
+<!-- Marcação Apple -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="With Manifest">
+<meta name="apple-mobile-web-app-status-bar-style" content="{{$configuracao['cor']}}">
+<link rel="apple-touch-icon" sizes="152x152" href="{{asset('assets/img/favicon.png')}}">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('assets/img/favicon.png')}}">
+ 
+<!-- Marcações para Twitter Card -->
+<meta name="twitter:card" content="{{$configuracao['titulo']}}">
+<meta name="twitter:site" content="https://{{$configuracao['site']}}">
+<meta name="twitter:title" content="{{$configuracao['titulo']}}">
+<meta name="twitter:description" content="{{$configuracao['descricao']}}">
+<meta name="twitter:image" content="{{asset('assets/img/favicon.png')}}">
+<meta name="twitter:creator" content="@marcelodaintern">
+
 <!-- Marcações Open Graph / Facebook -->
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="{{$configuracao['titulo']}}" />
@@ -39,14 +47,6 @@
 <meta property="og:image:width" content="400" />
 <meta property="og:image:height" content="300" />
 <meta property="og:image:alt" content="{{$configuracao['titulo']}}" />  
-
-<!-- Marcações para Twitter Card -->
-<meta name="twitter:card" content="{{$configuracao['titulo']}}">
-<meta name="twitter:site" content="https://{{$configuracao['site']}}">
-<meta name="twitter:title" content="{{$configuracao['titulo']}}">
-<meta name="twitter:description" content="{{$configuracao['descricao']}}">
-<meta name="twitter:image" content="{{asset('assets/img/favicon.png')}}">
-<meta name="twitter:creator" content="@marcelodaintern">
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
